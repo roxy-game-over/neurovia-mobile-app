@@ -185,12 +185,32 @@ function Home() {
             </div>
           </div>
           <Link
-            to="/app/journey"
+            to="/app/paths"
             className="mt-3 inline-flex h-10 w-full items-center justify-center rounded-full bg-[var(--app-accent)] text-[14px] font-semibold text-[var(--app-on-accent)]"
           >
             Continue Plan
           </Link>
         </div>
+
+        {/* Explore */}
+        <div className="mt-4 grid grid-cols-4 gap-2.5">
+          {[
+            { to: "/app/library", label: "Library", emoji: "📚" },
+            { to: "/app/exercises", label: "Exercises", emoji: "🧠" },
+            { to: "/app/insights", label: "Insights", emoji: "📊" },
+            { to: "/app/personality", label: "My space", emoji: "🪞" },
+          ].map((item) => (
+            <Link
+              key={item.to}
+              to={item.to}
+              className="app-card flex flex-col items-center gap-1.5 px-1 py-3.5"
+            >
+              <span className="text-xl">{item.emoji}</span>
+              <span className="text-[11px] font-semibold text-[var(--app-text-dim)]">{item.label}</span>
+            </Link>
+          ))}
+        </div>
+
 
         {/* Garden */}
         <div className="app-card mt-4 p-4">
