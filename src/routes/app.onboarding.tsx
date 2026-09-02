@@ -128,7 +128,7 @@ function Onboarding() {
                 I’m here to listen, support you, and walk with you every step of the way.
               </p>
               <div className="relative mt-5">
-                <img src={VI.base} alt="VI waving" className="anim-float mx-auto size-48 object-contain" />
+                <img src={VI.classic} alt="VI waving" className="anim-float mx-auto size-48 object-contain" />
                 <p className="app-card absolute right-0 top-0 max-w-[52%] p-3 text-[13px]">
                   I’m excited to be part of your journey!
                 </p>
@@ -216,7 +216,7 @@ function Onboarding() {
                     Small steps today,<br />a better you tomorrow.
                   </p>
                 </div>
-                <img src={VI.base} alt="VI with a seedling" className="anim-float size-36 object-contain" />
+                <img src={VI.explorer} alt="VI with a seedling" className="anim-float size-36 object-contain" />
               </div>
               <div className="mt-6 space-y-3">
                 {JOURNEY_FEATURES.map((item) => (

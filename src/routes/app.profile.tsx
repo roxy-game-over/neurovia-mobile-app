@@ -50,7 +50,7 @@ function Profile() {
         {/* Identity */}
         <div className="app-card flex items-center gap-4 p-5">
           <img
-            src={VI.base}
+            src={VI.super}
             alt=""
             loading="lazy"
             className="size-16 shrink-0 rounded-full bg-[var(--app-accent)]/12 object-contain p-1"

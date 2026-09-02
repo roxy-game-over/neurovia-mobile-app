@@ -168,7 +168,7 @@ function Home() {
         <div className="app-card mt-4 p-4">
           <p className="text-[15px] font-semibold text-[var(--app-accent)]">Continue Your Journey</p>
           <div className="mt-3 flex items-center gap-3">
-            <img src={VI.base} alt="" className="size-14 shrink-0 object-contain" />
+            <img src={VI.hoodie} alt="" className="size-14 shrink-0 object-contain" />
             <div className="min-w-0 flex-1">
               <p className="text-[14px] font-semibold capitalize">
                 {journeyConcern.replace("-", " ")} · Day {Math.max(1, practices)}
@@ -272,7 +272,7 @@ function Home() {
         </div>
 
         <Link to="/app/via" className="app-card mt-3 flex items-center gap-3 p-4">
-          <img src={VI.chat} alt="" loading="lazy" className="size-14 shrink-0 object-contain" />
+          <img src={VI.classic} alt="" loading="lazy" className="size-14 shrink-0 object-contain" />
           <span className="min-w-0 flex-1">
             <strong className="block text-[14px] text-[var(--app-accent)]">VIA welcomes you</strong>
             <span className="text-[12px] text-[var(--app-text-dim)]">
