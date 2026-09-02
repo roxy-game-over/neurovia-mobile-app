@@ -10,33 +10,183 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as AppRouteImport } from './routes/app'
+import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as AppAuthRouteImport } from './routes/app.auth'
+import { Route as AppCareRouteImport } from './routes/app.care'
+import { Route as AppGardenRouteImport } from './routes/app.garden'
+import { Route as AppHomeRouteImport } from './routes/app.home'
+import { Route as AppJourneyRouteImport } from './routes/app.journey'
+import { Route as AppOnboardingRouteImport } from './routes/app.onboarding'
+import { Route as AppPracticeRouteImport } from './routes/app.practice'
+import { Route as AppProfileRouteImport } from './routes/app.profile'
+import { Route as AppSafetyRouteImport } from './routes/app.safety'
+import { Route as AppViaRouteImport } from './routes/app.via'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AppRoute = AppRouteImport.update({
+  id: '/app',
+  path: '/app',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiChatRoute = ApiChatRouteImport.update({
+  id: '/api/chat',
+  path: '/api/chat',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AppAuthRoute = AppAuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCareRoute = AppCareRouteImport.update({
+  id: '/care',
+  path: '/care',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppGardenRoute = AppGardenRouteImport.update({
+  id: '/garden',
+  path: '/garden',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppHomeRoute = AppHomeRouteImport.update({
+  id: '/home',
+  path: '/home',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppJourneyRoute = AppJourneyRouteImport.update({
+  id: '/journey',
+  path: '/journey',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppOnboardingRoute = AppOnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPracticeRoute = AppPracticeRouteImport.update({
+  id: '/practice',
+  path: '/practice',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppProfileRoute = AppProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppSafetyRoute = AppSafetyRouteImport.update({
+  id: '/safety',
+  path: '/safety',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppViaRoute = AppViaRouteImport.update({
+  id: '/via',
+  path: '/via',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/api/chat': typeof ApiChatRoute
+  '/app/auth': typeof AppAuthRoute
+  '/app/care': typeof AppCareRoute
+  '/app/garden': typeof AppGardenRoute
+  '/app/home': typeof AppHomeRoute
+  '/app/journey': typeof AppJourneyRoute
+  '/app/onboarding': typeof AppOnboardingRoute
+  '/app/practice': typeof AppPracticeRoute
+  '/app/profile': typeof AppProfileRoute
+  '/app/safety': typeof AppSafetyRoute
+  '/app/via': typeof AppViaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/api/chat': typeof ApiChatRoute
+  '/app/auth': typeof AppAuthRoute
+  '/app/care': typeof AppCareRoute
+  '/app/garden': typeof AppGardenRoute
+  '/app/home': typeof AppHomeRoute
+  '/app/journey': typeof AppJourneyRoute
+  '/app/onboarding': typeof AppOnboardingRoute
+  '/app/practice': typeof AppPracticeRoute
+  '/app/profile': typeof AppProfileRoute
+  '/app/safety': typeof AppSafetyRoute
+  '/app/via': typeof AppViaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/app': typeof AppRouteWithChildren
+  '/api/chat': typeof ApiChatRoute
+  '/app/auth': typeof AppAuthRoute
+  '/app/care': typeof AppCareRoute
+  '/app/garden': typeof AppGardenRoute
+  '/app/home': typeof AppHomeRoute
+  '/app/journey': typeof AppJourneyRoute
+  '/app/onboarding': typeof AppOnboardingRoute
+  '/app/practice': typeof AppPracticeRoute
+  '/app/profile': typeof AppProfileRoute
+  '/app/safety': typeof AppSafetyRoute
+  '/app/via': typeof AppViaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/app'
+    | '/api/chat'
+    | '/app/auth'
+    | '/app/care'
+    | '/app/garden'
+    | '/app/home'
+    | '/app/journey'
+    | '/app/onboarding'
+    | '/app/practice'
+    | '/app/profile'
+    | '/app/safety'
+    | '/app/via'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/app'
+    | '/api/chat'
+    | '/app/auth'
+    | '/app/care'
+    | '/app/garden'
+    | '/app/home'
+    | '/app/journey'
+    | '/app/onboarding'
+    | '/app/practice'
+    | '/app/profile'
+    | '/app/safety'
+    | '/app/via'
+  id:
+    | '__root__'
+    | '/'
+    | '/app'
+    | '/api/chat'
+    | '/app/auth'
+    | '/app/care'
+    | '/app/garden'
+    | '/app/home'
+    | '/app/journey'
+    | '/app/onboarding'
+    | '/app/practice'
+    | '/app/profile'
+    | '/app/safety'
+    | '/app/via'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AppRoute: typeof AppRouteWithChildren
+  ApiChatRoute: typeof ApiChatRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +198,125 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/app': {
+      id: '/app'
+      path: '/app'
+      fullPath: '/app'
+      preLoaderRoute: typeof AppRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/chat': {
+      id: '/api/chat'
+      path: '/api/chat'
+      fullPath: '/api/chat'
+      preLoaderRoute: typeof ApiChatRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/app/auth': {
+      id: '/app/auth'
+      path: '/auth'
+      fullPath: '/app/auth'
+      preLoaderRoute: typeof AppAuthRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/care': {
+      id: '/app/care'
+      path: '/care'
+      fullPath: '/app/care'
+      preLoaderRoute: typeof AppCareRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/garden': {
+      id: '/app/garden'
+      path: '/garden'
+      fullPath: '/app/garden'
+      preLoaderRoute: typeof AppGardenRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/home': {
+      id: '/app/home'
+      path: '/home'
+      fullPath: '/app/home'
+      preLoaderRoute: typeof AppHomeRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/journey': {
+      id: '/app/journey'
+      path: '/journey'
+      fullPath: '/app/journey'
+      preLoaderRoute: typeof AppJourneyRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/onboarding': {
+      id: '/app/onboarding'
+      path: '/onboarding'
+      fullPath: '/app/onboarding'
+      preLoaderRoute: typeof AppOnboardingRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/practice': {
+      id: '/app/practice'
+      path: '/practice'
+      fullPath: '/app/practice'
+      preLoaderRoute: typeof AppPracticeRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/profile': {
+      id: '/app/profile'
+      path: '/profile'
+      fullPath: '/app/profile'
+      preLoaderRoute: typeof AppProfileRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/safety': {
+      id: '/app/safety'
+      path: '/safety'
+      fullPath: '/app/safety'
+      preLoaderRoute: typeof AppSafetyRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/via': {
+      id: '/app/via'
+      path: '/via'
+      fullPath: '/app/via'
+      preLoaderRoute: typeof AppViaRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
+interface AppRouteChildren {
+  AppAuthRoute: typeof AppAuthRoute
+  AppCareRoute: typeof AppCareRoute
+  AppGardenRoute: typeof AppGardenRoute
+  AppHomeRoute: typeof AppHomeRoute
+  AppJourneyRoute: typeof AppJourneyRoute
+  AppOnboardingRoute: typeof AppOnboardingRoute
+  AppPracticeRoute: typeof AppPracticeRoute
+  AppProfileRoute: typeof AppProfileRoute
+  AppSafetyRoute: typeof AppSafetyRoute
+  AppViaRoute: typeof AppViaRoute
+}
+
+const AppRouteChildren: AppRouteChildren = {
+  AppAuthRoute: AppAuthRoute,
+  AppCareRoute: AppCareRoute,
+  AppGardenRoute: AppGardenRoute,
+  AppHomeRoute: AppHomeRoute,
+  AppJourneyRoute: AppJourneyRoute,
+  AppOnboardingRoute: AppOnboardingRoute,
+  AppPracticeRoute: AppPracticeRoute,
+  AppProfileRoute: AppProfileRoute,
+  AppSafetyRoute: AppSafetyRoute,
+  AppViaRoute: AppViaRoute,
+}
+
+const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AppRoute: AppRouteWithChildren,
+  ApiChatRoute: ApiChatRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
