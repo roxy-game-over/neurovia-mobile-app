@@ -37,9 +37,9 @@ function Safety() {
         <div className="app-card mt-4 p-5">
           <h3 className="text-[15px] font-bold">Read the fine print</h3>
           <div className="mt-3 space-y-2 text-[13px] font-semibold text-[var(--app-accent)]">
-            <a href="/privacy" className="block">Privacy policy →</a>
-            <a href="/terms" className="block">Terms & conditions →</a>
-            <a href="/disclaimer" className="block">Mental wellness disclaimer →</a>
+            <a href="https://neurovia-ai-in.lovable.app/privacy" target="_blank" rel="noreferrer" className="block">Privacy policy →</a>
+            <a href="https://neurovia-ai-in.lovable.app/terms" target="_blank" rel="noreferrer" className="block">Terms & conditions →</a>
+            <a href="https://neurovia-ai-in.lovable.app/disclaimer" target="_blank" rel="noreferrer" className="block">Mental wellness disclaimer →</a>
           </div>
         </div>
       </div>

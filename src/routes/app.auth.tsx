@@ -79,7 +79,7 @@ function AppAuth() {
           <div className="my-5 flex items-center gap-3 text-[12px] text-[var(--app-text-dim)]"><span className="h-px flex-1 bg-[var(--app-border)]" />or<span className="h-px flex-1 bg-[var(--app-border)]" /></div>
           <Button type="button" variant="outline" onClick={google} className="app-btn-quiet border-[var(--app-border)]"><Chrome className="size-5" /> Continue with Google</Button>
         </div>
-        <p className="text-center text-[11px] leading-relaxed text-[var(--app-text-dim)]">By continuing, you agree to Neurovia’s <Link to="/terms" className="underline">Terms</Link> and <Link to="/privacy" className="underline">Privacy Policy</Link>.</p>
+        <p className="text-center text-[11px] leading-relaxed text-[var(--app-text-dim)]">By continuing, you agree to Neurovia’s <a href="https://neurovia-ai-in.lovable.app/terms" target="_blank" rel="noreferrer" className="underline">Terms</a> and <a href="https://neurovia-ai-in.lovable.app/privacy" target="_blank" rel="noreferrer" className="underline">Privacy Policy</a>.</p>
       </div>
     </AppScreenPlain>
   );

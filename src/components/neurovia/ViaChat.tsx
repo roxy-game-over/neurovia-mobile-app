@@ -207,10 +207,7 @@ function ChatWindow({
         </PromptInput>
         <p className="mt-3 text-center text-[12px] text-ink-muted">
           If you&apos;re in crisis, call 112 or Tele-MANAS on 14416.{" "}
-          <Link to="/waitlist" className="text-purple underline-offset-4 hover:underline">
-            Join the waitlist
-          </Link>{" "}
-          to keep VI with you every day.
+          VI is here whenever you need a gentle moment.
         </p>
       </div>
     </div>
