@@ -222,7 +222,9 @@ function Home() {
           <div className="max-w-[62%]">
             <h3 className="text-[17px] font-bold">The Garden</h3>
             <p className="mt-1 text-[13px] leading-snug text-[var(--app-text-dim)]">
-              Every check-in, lesson, practice and mind game you finish earns care for your seed. {practices} so far.
+              Every check-in, lesson, practice and mind game you finish earns care for your
+              seed — {practices} so far.
+
             </p>
             <div className="mt-3 flex items-center gap-2">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--app-surface-2)] px-2.5 py-1 text-[11px] font-semibold">
