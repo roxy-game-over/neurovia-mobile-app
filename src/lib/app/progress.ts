@@ -3,10 +3,10 @@ import type { AppProfile } from "@/lib/app/auth";
 export const GARDEN_STAGES = [
   { id: "seed", label: "Seed", threshold: 0, emoji: "🌰" },
   { id: "sprout", label: "Sprout", threshold: 3, emoji: "🌱" },
-  { id: "sapling", label: "Sapling", threshold: 8, emoji: "🌿" },
+  { id: "sapling", label: "Sapling", threshold: 10, emoji: "🌿" },
   { id: "flowering", label: "Flowering", threshold: 15, emoji: "🌸" },
-  { id: "strong_tree", label: "Strong tree", threshold: 25, emoji: "🌳" },
-  { id: "blooming", label: "Blooming", threshold: 40, emoji: "🌺" },
+  { id: "strong_tree", label: "Strong Tree", threshold: 30, emoji: "🌳" },
+  { id: "blooming", label: "Blooming", threshold: 45, emoji: "🌺" },
   { id: "sanctuary", label: "Sanctuary", threshold: 60, emoji: "🏡" },
 ] as const;
 
