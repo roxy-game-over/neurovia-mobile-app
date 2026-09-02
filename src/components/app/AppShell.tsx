@@ -85,7 +85,7 @@ export function TabBar() {
               className="flex size-11 items-center justify-center overflow-hidden rounded-full border-2"
               style={{ borderColor: viaActive ? "var(--app-accent)" : "var(--app-border)" }}
             >
-              <img src={VI.base} alt="" className="size-9 object-contain" />
+              <img src={VI.classic} alt="" className="size-9 object-contain" />
             </span>
           </Link>
         </li>

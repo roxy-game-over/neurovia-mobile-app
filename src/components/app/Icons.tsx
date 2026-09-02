@@ -1,30 +1,42 @@
 import {
   Activity,
+  BatteryFull,
+  BatteryLow,
+  BatteryMedium,
   BookOpen,
   Brain,
   ChartLine,
+  CloudMoon,
+  CloudRain,
   Cloudy,
   Compass,
   Droplets,
   Flower2,
+  Frown,
   Gamepad2,
   Grid2x2,
   Hand,
   HeartHandshake,
+  Laugh,
   Leaf,
   LifeBuoy,
   Lock,
   type LucideIcon,
+  Meh,
   Moon,
+  MoonStar,
   NotebookPen,
   Palette,
   Puzzle,
   Shapes,
   ShieldCheck,
   ShoppingBag,
+  Smile,
   Sparkle,
+  Sparkles,
   Sprout,
   Stethoscope,
+  Sunrise,
   Target,
   Timer,
   TreeDeciduous,
@@ -32,7 +44,9 @@ import {
   UserRound,
   Waves,
   Wind,
+  Zap,
 } from "lucide-react";
+
 
 /**
  * Neurovia uses drawn iconography — never emoji — inside the app surfaces.
@@ -71,6 +85,22 @@ export const APP_ICONS = {
   locked: { icon: Lock, tint: "var(--app-text-dim)" },
   spark: { icon: Sparkle, tint: "var(--app-gold)" },
   energy: { icon: Activity, tint: "var(--app-gold)" },
+  mood1: { icon: CloudRain, tint: "var(--app-rose)" },
+  mood2: { icon: Frown, tint: "var(--app-rose)" },
+  mood3: { icon: Meh, tint: "var(--app-gold)" },
+  mood4: { icon: Smile, tint: "var(--app-mint)" },
+  mood5: { icon: Laugh, tint: "var(--app-mint)" },
+  energy1: { icon: BatteryLow, tint: "var(--app-rose)" },
+  energy2: { icon: BatteryMedium, tint: "var(--app-gold)" },
+  energy3: { icon: BatteryFull, tint: "var(--app-mint)" },
+  energy4: { icon: Zap, tint: "var(--app-gold)" },
+  energy5: { icon: Sparkles, tint: "var(--app-accent)" },
+  sleep1: { icon: CloudMoon, tint: "var(--app-rose)" },
+  sleep2: { icon: Moon, tint: "var(--app-gold)" },
+  sleep3: { icon: MoonStar, tint: "var(--app-accent)" },
+  sleep4: { icon: Sunrise, tint: "var(--app-mint)" },
+  sleep5: { icon: Sunrise, tint: "var(--app-gold)" },
+
 } satisfies Record<string, { icon: LucideIcon; tint: string }>;
 
 export type AppIconKey = keyof typeof APP_ICONS;
@@ -108,14 +138,23 @@ export function AppIcon({
   name,
   size = 18,
   className = "",
+  color,
 }: {
   name: AppIconKey;
   size?: number;
   className?: string;
+  color?: string;
 }) {
   const { icon: Icon, tint } = APP_ICONS[name];
-  return <Icon className={className} style={{ width: size, height: size, color: tint }} strokeWidth={1.9} />;
+  return (
+    <Icon
+      className={className}
+      style={{ width: size, height: size, color: color ?? tint }}
+      strokeWidth={1.9}
+    />
+  );
 }
+
 
 /**
  * Legacy content lists still carry an emoji field. Map it to a drawn icon so no

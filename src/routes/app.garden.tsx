@@ -48,7 +48,7 @@ function Garden() {
           </p>
           <h1 className="mt-1 text-[26px] font-bold leading-tight">{stage.label}</h1>
           <p className="mt-1 max-w-[62%] text-[13px] leading-snug text-[var(--app-text)]/75">
-            Your garden grows when you do. Every practice, check-in and game waters a seed.
+            Every check-in, lesson, practice and mind game you finish earns care for your seed.
           </p>
           <img
             src={VI.garden}
@@ -126,7 +126,7 @@ function Garden() {
                   <span className="min-w-0 flex-1">
                     <strong className="block text-[14.5px]">{s.label}</strong>
                     <span className="block text-[11.5px] text-[var(--app-text-dim)]">
-                      {s.threshold === 0 ? s.body : `${s.body} · unlocks at ${s.threshold} practices`}
+                      {s.body}
                     </span>
                   </span>
                   {isCurrent ? (
@@ -162,7 +162,7 @@ function Garden() {
                         : "bg-[var(--app-surface-2)] text-[var(--app-text-dim)]"
                     }`}
                   >
-                    {affordable ? "Build" : "Locked"} · {s.cost}
+                    {s.cost === 0 ? "Opens first" : affordable ? `Unlock · ${s.cost}` : `${s.cost} coins`}
                   </button>
                 </div>
               );

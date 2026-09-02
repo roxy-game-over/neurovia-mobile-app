@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import { AppScreenPlain, ThemeToggle } from "@/components/app/AppShell";
 import { Vi } from "@/components/app/Brand";
+import { IconChip, type AppIconKey } from "@/components/app/Icons";
 import { supabase } from "@/integrations/supabase/client";
 import { useAppAuth } from "@/lib/app/auth";
 import { CHECKIN_COIN_REWARD } from "@/lib/app/progress";
@@ -18,28 +19,29 @@ export const Route = createFileRoute("/app/checkin")({
 });
 
 export const MOODS = [
-  { emoji: "😢", label: "Awful", value: 1 },
-  { emoji: "🙁", label: "Low", value: 2 },
-  { emoji: "😐", label: "Okay", value: 3 },
-  { emoji: "🙂", label: "Good", value: 4 },
-  { emoji: "😄", label: "Great", value: 5 },
+  { icon: "mood1", label: "Bad", value: 1 },
+  { icon: "mood2", label: "Low", value: 2 },
+  { icon: "mood3", label: "Okay", value: 3 },
+  { icon: "mood4", label: "Good", value: 4 },
+  { icon: "mood5", label: "Great", value: 5 },
 ] as const;
 
 const ENERGY = [
-  { emoji: "🪫", label: "Drained", note: "Running on empty", value: 1 },
-  { emoji: "🔋", label: "Low", note: "Slow and steady", value: 2 },
-  { emoji: "🔋", label: "Steady", note: "Enough for today", value: 3 },
-  { emoji: "⚡", label: "Energised", note: "Ready to move", value: 4 },
-  { emoji: "✨", label: "Buzzing", note: "Hard to settle", value: 5 },
+  { icon: "energy1", label: "Drained", note: "Running on empty", value: 1 },
+  { icon: "energy2", label: "Low", note: "Slow and steady", value: 2 },
+  { icon: "energy3", label: "Medium", note: "Enough for today", value: 3 },
+  { icon: "energy4", label: "Energised", note: "Ready to move", value: 4 },
+  { icon: "energy5", label: "Buzzing", note: "Hard to settle", value: 5 },
 ] as const;
 
 const SLEEP = [
-  { emoji: "🌑", label: "Barely slept", note: "Under 4 hours", value: 1 },
-  { emoji: "🌘", label: "Restless", note: "Woke up often", value: 2 },
-  { emoji: "🌗", label: "Okay", note: "Some rest", value: 3 },
-  { emoji: "🌖", label: "Good", note: "Mostly restful", value: 4 },
-  { emoji: "🌕", label: "Deep rest", note: "Woke up refreshed", value: 5 },
+  { icon: "sleep1", label: "Barely slept", note: "Under 4 hours", value: 1 },
+  { icon: "sleep2", label: "Restless", note: "Woke up often", value: 2 },
+  { icon: "sleep3", label: "Okay", note: "6.5h · some rest", value: 3 },
+  { icon: "sleep4", label: "Good", note: "Mostly restful", value: 4 },
+  { icon: "sleep5", label: "Deep rest", note: "Woke up refreshed", value: 5 },
 ] as const;
+
 
 export function dayOf(iso: string) {
   return format(new Date(iso), "yyyy-MM-dd");
@@ -58,7 +60,7 @@ function OptionRow({
   selected,
   onSelect,
 }: {
-  items: readonly { emoji: string; label: string; note?: string; value: number }[];
+  items: readonly { icon: AppIconKey; label: string; note?: string; value: number }[];
   selected: number | null;
   onSelect: (v: number) => void;
 }) {
@@ -77,9 +79,8 @@ function OptionRow({
               background: active ? "color-mix(in oklab, var(--app-accent) 14%, transparent)" : "var(--app-surface)",
             }}
           >
-            <span className="flex size-11 items-center justify-center rounded-2xl bg-[var(--app-surface-2)] text-2xl">
-              {item.emoji}
-            </span>
+            <IconChip name={item.icon} size={44} />
+
             <span className="min-w-0 flex-1">
               <strong className="block text-[15px] text-[var(--app-text)]">{item.label}</strong>
               {item.note && (
