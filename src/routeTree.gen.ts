@@ -15,6 +15,7 @@ import { Route as ApiChatRouteImport } from './routes/api/chat'
 import { Route as AppAccountRouteImport } from './routes/app.account'
 import { Route as AppAuthRouteImport } from './routes/app.auth'
 import { Route as AppCareRouteImport } from './routes/app.care'
+import { Route as AppCheckinRouteImport } from './routes/app.checkin'
 import { Route as AppGardenRouteImport } from './routes/app.garden'
 import { Route as AppHomeRouteImport } from './routes/app.home'
 import { Route as AppJourneyRouteImport } from './routes/app.journey'
@@ -52,6 +53,11 @@ const AppAuthRoute = AppAuthRouteImport.update({
 const AppCareRoute = AppCareRouteImport.update({
   id: '/care',
   path: '/care',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppCheckinRoute = AppCheckinRouteImport.update({
+  id: '/checkin',
+  path: '/checkin',
   getParentRoute: () => AppRoute,
 } as any)
 const AppGardenRoute = AppGardenRouteImport.update({
@@ -102,6 +108,7 @@ export interface FileRoutesByFullPath {
   '/app/account': typeof AppAccountRoute
   '/app/auth': typeof AppAuthRoute
   '/app/care': typeof AppCareRoute
+  '/app/checkin': typeof AppCheckinRoute
   '/app/garden': typeof AppGardenRoute
   '/app/home': typeof AppHomeRoute
   '/app/journey': typeof AppJourneyRoute
@@ -118,6 +125,7 @@ export interface FileRoutesByTo {
   '/app/account': typeof AppAccountRoute
   '/app/auth': typeof AppAuthRoute
   '/app/care': typeof AppCareRoute
+  '/app/checkin': typeof AppCheckinRoute
   '/app/garden': typeof AppGardenRoute
   '/app/home': typeof AppHomeRoute
   '/app/journey': typeof AppJourneyRoute
@@ -135,6 +143,7 @@ export interface FileRoutesById {
   '/app/account': typeof AppAccountRoute
   '/app/auth': typeof AppAuthRoute
   '/app/care': typeof AppCareRoute
+  '/app/checkin': typeof AppCheckinRoute
   '/app/garden': typeof AppGardenRoute
   '/app/home': typeof AppHomeRoute
   '/app/journey': typeof AppJourneyRoute
@@ -153,6 +162,7 @@ export interface FileRouteTypes {
     | '/app/account'
     | '/app/auth'
     | '/app/care'
+    | '/app/checkin'
     | '/app/garden'
     | '/app/home'
     | '/app/journey'
@@ -169,6 +179,7 @@ export interface FileRouteTypes {
     | '/app/account'
     | '/app/auth'
     | '/app/care'
+    | '/app/checkin'
     | '/app/garden'
     | '/app/home'
     | '/app/journey'
@@ -185,6 +196,7 @@ export interface FileRouteTypes {
     | '/app/account'
     | '/app/auth'
     | '/app/care'
+    | '/app/checkin'
     | '/app/garden'
     | '/app/home'
     | '/app/journey'
@@ -243,6 +255,13 @@ declare module '@tanstack/react-router' {
       path: '/care'
       fullPath: '/app/care'
       preLoaderRoute: typeof AppCareRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/checkin': {
+      id: '/app/checkin'
+      path: '/checkin'
+      fullPath: '/app/checkin'
+      preLoaderRoute: typeof AppCheckinRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/garden': {
@@ -308,6 +327,7 @@ interface AppRouteChildren {
   AppAccountRoute: typeof AppAccountRoute
   AppAuthRoute: typeof AppAuthRoute
   AppCareRoute: typeof AppCareRoute
+  AppCheckinRoute: typeof AppCheckinRoute
   AppGardenRoute: typeof AppGardenRoute
   AppHomeRoute: typeof AppHomeRoute
   AppJourneyRoute: typeof AppJourneyRoute
@@ -322,6 +342,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppAccountRoute: AppAccountRoute,
   AppAuthRoute: AppAuthRoute,
   AppCareRoute: AppCareRoute,
+  AppCheckinRoute: AppCheckinRoute,
   AppGardenRoute: AppGardenRoute,
   AppHomeRoute: AppHomeRoute,
   AppJourneyRoute: AppJourneyRoute,
