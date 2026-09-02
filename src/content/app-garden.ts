@@ -54,11 +54,17 @@ export const VI_OUTFITS: {
   label: string;
   body: string;
   cost: number;
-  mood: "base" | "meditate" | "read" | "garden" | "game" | "care";
+  mood: ViMood;
 }[] = [
-  { id: "everyday", label: "Everyday VI", body: "The one you met on day one.", cost: 0, mood: "base" },
-  { id: "gardener", label: "Gardener", body: "Watering can and all.", cost: 90, mood: "garden" },
-  { id: "reader", label: "Reader", body: "Round glasses, open book.", cost: 120, mood: "read" },
-  { id: "player", label: "Player", body: "Controller in both hands.", cost: 150, mood: "game" },
-  { id: "monk", label: "Stillness", body: "Cross-legged, eyes closed.", cost: 180, mood: "meditate" },
+  { id: "classic", label: "Classic", body: "The one you met on day one.", cost: 0, mood: "classic" },
+  { id: "cozy", label: "Cozy", body: "Blanket and a warm cup.", cost: 80, mood: "cozy" },
+  { id: "explorer", label: "Explorer", body: "Hat on, garden ahead.", cost: 110, mood: "explorer" },
+  { id: "student", label: "Student", body: "Round glasses, open book.", cost: 130, mood: "student" },
+  { id: "meditator", label: "Stillness", body: "Cross-legged, eyes closed.", cost: 150, mood: "meditator" },
+  { id: "artist", label: "Artist", body: "Palette, apron, brush.", cost: 170, mood: "artist" },
+  { id: "scientist", label: "Scientist", body: "Goggles and a flask.", cost: 190, mood: "scientist" },
+  { id: "night", label: "Night Mode", body: "A lantern for late hours.", cost: 210, mood: "night" },
+  { id: "super", label: "Super", body: "Cape up on hard days.", cost: 240, mood: "super" },
+  { id: "celebration", label: "Celebration", body: "Balloon, confetti, streak intact.", cost: 260, mood: "celebration" },
 ];
+
