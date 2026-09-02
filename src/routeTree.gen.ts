@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AppRouteImport } from './routes/app'
 import { Route as ApiChatRouteImport } from './routes/api/chat'
+import { Route as AppAccountRouteImport } from './routes/app.account'
 import { Route as AppAuthRouteImport } from './routes/app.auth'
 import { Route as AppCareRouteImport } from './routes/app.care'
 import { Route as AppGardenRouteImport } from './routes/app.garden'
@@ -37,6 +38,11 @@ const ApiChatRoute = ApiChatRouteImport.update({
   id: '/api/chat',
   path: '/api/chat',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AppAccountRoute = AppAccountRouteImport.update({
+  id: '/account',
+  path: '/account',
+  getParentRoute: () => AppRoute,
 } as any)
 const AppAuthRoute = AppAuthRouteImport.update({
   id: '/auth',
@@ -93,6 +99,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/api/chat': typeof ApiChatRoute
+  '/app/account': typeof AppAccountRoute
   '/app/auth': typeof AppAuthRoute
   '/app/care': typeof AppCareRoute
   '/app/garden': typeof AppGardenRoute
@@ -108,6 +115,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/api/chat': typeof ApiChatRoute
+  '/app/account': typeof AppAccountRoute
   '/app/auth': typeof AppAuthRoute
   '/app/care': typeof AppCareRoute
   '/app/garden': typeof AppGardenRoute
@@ -124,6 +132,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/app': typeof AppRouteWithChildren
   '/api/chat': typeof ApiChatRoute
+  '/app/account': typeof AppAccountRoute
   '/app/auth': typeof AppAuthRoute
   '/app/care': typeof AppCareRoute
   '/app/garden': typeof AppGardenRoute
@@ -141,6 +150,7 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/api/chat'
+    | '/app/account'
     | '/app/auth'
     | '/app/care'
     | '/app/garden'
@@ -156,6 +166,7 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/api/chat'
+    | '/app/account'
     | '/app/auth'
     | '/app/care'
     | '/app/garden'
@@ -171,6 +182,7 @@ export interface FileRouteTypes {
     | '/'
     | '/app'
     | '/api/chat'
+    | '/app/account'
     | '/app/auth'
     | '/app/care'
     | '/app/garden'
@@ -211,6 +223,13 @@ declare module '@tanstack/react-router' {
       fullPath: '/api/chat'
       preLoaderRoute: typeof ApiChatRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/app/account': {
+      id: '/app/account'
+      path: '/account'
+      fullPath: '/app/account'
+      preLoaderRoute: typeof AppAccountRouteImport
+      parentRoute: typeof AppRoute
     }
     '/app/auth': {
       id: '/app/auth'
@@ -286,6 +305,7 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteChildren {
+  AppAccountRoute: typeof AppAccountRoute
   AppAuthRoute: typeof AppAuthRoute
   AppCareRoute: typeof AppCareRoute
   AppGardenRoute: typeof AppGardenRoute
@@ -299,6 +319,7 @@ interface AppRouteChildren {
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAccountRoute: AppAccountRoute,
   AppAuthRoute: AppAuthRoute,
   AppCareRoute: AppCareRoute,
   AppGardenRoute: AppGardenRoute,
