@@ -1,5 +1,4 @@
 import { useChat } from "@ai-sdk/react";
-import { Link } from "@tanstack/react-router";
 import { DefaultChatTransport, type UIMessage } from "ai";
 import { useEffect, useRef, useState } from "react";
 
