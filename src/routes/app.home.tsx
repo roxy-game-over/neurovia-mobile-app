@@ -213,22 +213,28 @@ function Home() {
 
         {/* Trio */}
         <div className="mt-4 grid grid-cols-2 gap-3">
-          <Link to="/app/care" className="app-card p-4">
+          <Link to="/app/care" className="app-card flex flex-col p-4">
             <span className="text-2xl">🛋️</span>
             <strong className="mt-2 block text-[14px]">Talk to Therapist</strong>
-            <span className="text-[11px] text-[var(--app-text-dim)]">
+            <span className="mt-1 block text-[11px] leading-snug text-[var(--app-text-dim)]">
               Professional support when you need it.
             </span>
-            <span className="mt-3 inline-flex h-8 items-center rounded-full bg-[var(--app-accent)] px-3 text-[12px] font-semibold text-[var(--app-on-accent)]">
-              Connect Now
+            <span className="mt-auto pt-3">
+              <span className="inline-flex h-8 items-center rounded-full bg-[var(--app-accent)] px-3 text-[12px] font-semibold text-[var(--app-on-accent)]">
+                Connect Now
+              </span>
             </span>
           </Link>
-          <Link to="/app/gaming" className="app-card p-4">
+          <Link to="/app/gaming" className="app-card flex flex-col p-4">
             <span className="text-2xl">🎮</span>
             <strong className="mt-2 block text-[14px]">Play &amp; Grow</strong>
-            <span className="text-[11px] text-[var(--app-text-dim)]">Fun games that help you heal.</span>
-            <span className="mt-3 inline-flex h-8 items-center rounded-full bg-[var(--app-accent)] px-3 text-[12px] font-semibold text-[var(--app-on-accent)]">
-              Play Now
+            <span className="mt-1 block text-[11px] leading-snug text-[var(--app-text-dim)]">
+              Fun games that help you heal.
+            </span>
+            <span className="mt-auto pt-3">
+              <span className="inline-flex h-8 items-center rounded-full bg-[var(--app-accent)] px-3 text-[12px] font-semibold text-[var(--app-on-accent)]">
+                Play Now
+              </span>
             </span>
           </Link>
         </div>
