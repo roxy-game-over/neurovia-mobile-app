@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowLeft } from "lucide-react";
 
 import { AppScreen } from "@/components/app/AppShell";
+import { IconChip, iconForEmoji } from "@/components/app/Icons";
 
 export const Route = createFileRoute("/app/safety")({ component: Safety });
 
@@ -27,7 +28,7 @@ function Safety() {
         <div className="mt-6 space-y-3">
           {PRINCIPLES.map((p) => (
             <div key={p.title} className="app-card p-5">
-              <span className="text-2xl">{p.emoji}</span>
+              <IconChip name={iconForEmoji(p.emoji)} size={42} />
               <h3 className="mt-2 text-[15px] font-bold">{p.title}</h3>
               <p className="mt-1 text-[13px] leading-relaxed text-[var(--app-text-dim)]">{p.body}</p>
             </div>

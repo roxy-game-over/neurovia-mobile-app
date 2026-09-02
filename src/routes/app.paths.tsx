@@ -3,6 +3,7 @@ import { ArrowRight, CheckCircle2, Clock } from "lucide-react";
 import { useEffect, useState } from "react";
 
 import { AppScreen, ScreenHeader } from "@/components/app/AppShell";
+import { IconChip, iconForEmoji } from "@/components/app/Icons";
 import { Vi } from "@/components/app/Brand";
 import { GROWTH_PATHS, readProgress, type PathProgress } from "@/content/growth-paths";
 
@@ -37,12 +38,7 @@ function Paths() {
               className="app-card flex flex-col gap-3 p-4 transition-transform active:scale-[0.99]"
             >
               <div className="flex items-center gap-3.5">
-                <span
-                  className="flex size-12 items-center justify-center rounded-2xl text-2xl"
-                  style={{ background: `color-mix(in oklab, ${path.accent} 16%, transparent)` }}
-                >
-                  {path.emoji}
-                </span>
+                <IconChip name={iconForEmoji(path.emoji)} size={48} />
                 <span className="min-w-0 flex-1">
                   <strong className="block text-[16px] text-[var(--app-text)]">{path.name}</strong>
                   <span className="block text-[12.5px] text-[var(--app-text-dim)]">{path.tagline}</span>

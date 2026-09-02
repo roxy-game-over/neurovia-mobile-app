@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 
 import { AppScreen } from "@/components/app/AppShell";
+import { IconChip, iconForEmoji } from "@/components/app/Icons";
 import {
   BoxBreathing,
   Grounding,
@@ -47,9 +48,7 @@ function Practice() {
               onClick={() => setActive(tool.id)}
               className="app-card flex w-full items-center gap-4 p-4 text-left transition-transform active:scale-[0.98]"
             >
-              <span className="flex size-12 items-center justify-center rounded-2xl bg-[var(--app-accent)]/12 text-2xl">
-                {tool.emoji}
-              </span>
+              <IconChip name={iconForEmoji(tool.emoji)} size={48} />
               <span className="min-w-0 flex-1">
                 <strong className="block text-[15px]">{tool.name}</strong>
                 <span className="block text-[12px] text-[var(--app-text-dim)]">{tool.desc}</span>

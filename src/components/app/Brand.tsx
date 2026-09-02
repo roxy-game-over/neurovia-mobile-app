@@ -1,13 +1,27 @@
 import viBase from "@/assets/vi-base.png.asset.json";
+import viCare from "@/assets/vi-care.png.asset.json";
 import viCelebrate from "@/assets/vi-celebrate.png.asset.json";
+import viChat from "@/assets/vi-chat.png.asset.json";
 import viEnergy from "@/assets/vi-energy.png.asset.json";
+import viGame from "@/assets/vi-game.png.asset.json";
+import viGarden from "@/assets/vi-garden.png.asset.json";
+import viMeditate from "@/assets/vi-meditate.png.asset.json";
+import viRead from "@/assets/vi-read.png.asset.json";
 import viSleep from "@/assets/vi-sleep.png.asset.json";
+import viThink from "@/assets/vi-think.png.asset.json";
 
 export const VI = {
   base: viBase.url,
   energy: viEnergy.url,
   sleep: viSleep.url,
   celebrate: viCelebrate.url,
+  game: viGame.url,
+  read: viRead.url,
+  meditate: viMeditate.url,
+  care: viCare.url,
+  garden: viGarden.url,
+  think: viThink.url,
+  chat: viChat.url,
 } as const;
 
 export type ViMood = keyof typeof VI;

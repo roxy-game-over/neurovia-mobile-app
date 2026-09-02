@@ -29,6 +29,7 @@ import { Route as AppPersonalityRouteImport } from './routes/app.personality'
 import { Route as AppPracticeRouteImport } from './routes/app.practice'
 import { Route as AppProfileRouteImport } from './routes/app.profile'
 import { Route as AppSafetyRouteImport } from './routes/app.safety'
+import { Route as AppSettingsRouteImport } from './routes/app.settings'
 import { Route as AppViaRouteImport } from './routes/app.via'
 import { Route as AppPathPathIdRouteImport } from './routes/app.path.$pathId'
 
@@ -132,6 +133,11 @@ const AppSafetyRoute = AppSafetyRouteImport.update({
   path: '/safety',
   getParentRoute: () => AppRoute,
 } as any)
+const AppSettingsRoute = AppSettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppViaRoute = AppViaRouteImport.update({
   id: '/via',
   path: '/via',
@@ -164,6 +170,7 @@ export interface FileRoutesByFullPath {
   '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
   '/app/safety': typeof AppSafetyRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/via': typeof AppViaRoute
   '/app/path/$pathId': typeof AppPathPathIdRoute
 }
@@ -188,6 +195,7 @@ export interface FileRoutesByTo {
   '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
   '/app/safety': typeof AppSafetyRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/via': typeof AppViaRoute
   '/app/path/$pathId': typeof AppPathPathIdRoute
 }
@@ -213,6 +221,7 @@ export interface FileRoutesById {
   '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
   '/app/safety': typeof AppSafetyRoute
+  '/app/settings': typeof AppSettingsRoute
   '/app/via': typeof AppViaRoute
   '/app/path/$pathId': typeof AppPathPathIdRoute
 }
@@ -239,6 +248,7 @@ export interface FileRouteTypes {
     | '/app/practice'
     | '/app/profile'
     | '/app/safety'
+    | '/app/settings'
     | '/app/via'
     | '/app/path/$pathId'
   fileRoutesByTo: FileRoutesByTo
@@ -263,6 +273,7 @@ export interface FileRouteTypes {
     | '/app/practice'
     | '/app/profile'
     | '/app/safety'
+    | '/app/settings'
     | '/app/via'
     | '/app/path/$pathId'
   id:
@@ -287,6 +298,7 @@ export interface FileRouteTypes {
     | '/app/practice'
     | '/app/profile'
     | '/app/safety'
+    | '/app/settings'
     | '/app/via'
     | '/app/path/$pathId'
   fileRoutesById: FileRoutesById
@@ -439,6 +451,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppSafetyRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/settings': {
+      id: '/app/settings'
+      path: '/settings'
+      fullPath: '/app/settings'
+      preLoaderRoute: typeof AppSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/via': {
       id: '/app/via'
       path: '/via'
@@ -474,6 +493,7 @@ interface AppRouteChildren {
   AppPracticeRoute: typeof AppPracticeRoute
   AppProfileRoute: typeof AppProfileRoute
   AppSafetyRoute: typeof AppSafetyRoute
+  AppSettingsRoute: typeof AppSettingsRoute
   AppViaRoute: typeof AppViaRoute
   AppPathPathIdRoute: typeof AppPathPathIdRoute
 }
@@ -496,6 +516,7 @@ const AppRouteChildren: AppRouteChildren = {
   AppPracticeRoute: AppPracticeRoute,
   AppProfileRoute: AppProfileRoute,
   AppSafetyRoute: AppSafetyRoute,
+  AppSettingsRoute: AppSettingsRoute,
   AppViaRoute: AppViaRoute,
   AppPathPathIdRoute: AppPathPathIdRoute,
 }

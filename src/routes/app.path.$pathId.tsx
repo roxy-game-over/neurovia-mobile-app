@@ -3,6 +3,7 @@ import { ArrowLeft, ArrowRight, Award, BookOpen, Check, Clock, Heart, PenLine, S
 import { useEffect, useState } from "react";
 
 import { AppScreenPlain } from "@/components/app/AppShell";
+import { IconChip, iconForEmoji } from "@/components/app/Icons";
 import { Vi, Wordmark } from "@/components/app/Brand";
 import { pathById, readProgress, writeProgress } from "@/content/growth-paths";
 import { useAppAuth } from "@/lib/app/auth";
@@ -75,12 +76,7 @@ function PathScreen() {
             <ArrowLeft className="size-5" />
           </button>
 
-          <span
-            className="mx-auto mt-6 flex size-20 items-center justify-center rounded-[28px] text-4xl"
-            style={{ background: `color-mix(in oklab, ${path.accent} 16%, transparent)` }}
-          >
-            {path.emoji}
-          </span>
+          <IconChip name={iconForEmoji(path.emoji)} size={80} className="mx-auto mt-6" />
           <h1 className="mt-4 text-center text-[26px] font-bold leading-tight text-[var(--app-text)]">
             {path.name}
           </h1>

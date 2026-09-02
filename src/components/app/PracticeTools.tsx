@@ -1,5 +1,6 @@
 import { ArrowLeft, ArrowRight, Check, Pause, Play, RotateCcw } from "lucide-react";
 import { useCallback, useEffect, useRef, useState } from "react";
+import { IconChip, iconForEmoji } from "@/components/app/Icons";
 
 import { Button } from "@/components/ui/button";
 import { supabase } from "@/integrations/supabase/client";
@@ -174,7 +175,7 @@ export function Grounding({ onBack }: ToolProps) {
     <ToolShell title="Grounding" subtitle="5-4-3-2-1. Come back to the room around you." onBack={onBack}>
       {!done ? (
         <div className="app-card flex flex-col items-center p-8 text-center">
-          <span className="text-4xl">{current.emoji}</span>
+          <IconChip name={iconForEmoji(current.emoji)} size={64} />
           <p className="mt-4 text-[15px] text-[var(--app-text-dim)]">Name</p>
           <h3 className="mt-1 text-[24px] font-bold">
             {current.count} {current.sense}
@@ -385,14 +386,14 @@ export function WindDown({ onBack }: ToolProps) {
       <div className="app-card flex min-h-[300px] flex-col items-center justify-center p-8 text-center">
         {!started ? (
           <>
-            <span className="text-4xl">🌙</span>
+            <IconChip name="sleep" size={64} />
             <h3 className="mt-4 text-[22px] font-bold">Four quiet steps</h3>
             <p className="mt-2 max-w-[260px] text-[13px] text-[var(--app-text-dim)]">Each one moves on its own. All you have to do is follow.</p>
             <Button type="button" className="app-btn mt-6 border-0" onClick={() => setStarted(true)}><Play className="size-4" /> Begin winding down</Button>
           </>
         ) : done ? (
           <>
-            <span className="text-4xl">✨</span>
+            <IconChip name="spark" size={64} />
             <h3 className="mt-4 text-[22px] font-bold">The day is put away.</h3>
             <p className="mt-2 max-w-[260px] text-[13px] text-[var(--app-text-dim)]">Rest is not a reward. It's part of the work. Good night.</p>
             <Button type="button" className="app-btn mt-6 border-0" onClick={() => { setStarted(false); setStep(0); setLeft(WINDDOWN_STEPS[0]!.seconds); }}>
@@ -401,7 +402,7 @@ export function WindDown({ onBack }: ToolProps) {
           </>
         ) : (
           <>
-            <span className="text-4xl">{current!.emoji}</span>
+            <IconChip name={iconForEmoji(current!.emoji)} size={64} />
             <h3 className="mt-4 text-[22px] font-bold">{current!.title}</h3>
             <p className="mt-2 max-w-[280px] text-[14px] leading-relaxed text-[var(--app-text-dim)]">{current!.body}</p>
             <p className="mt-6 text-3xl font-bold tabular-nums text-[var(--app-accent)]">{left}s</p>
