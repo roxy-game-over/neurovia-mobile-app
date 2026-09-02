@@ -128,7 +128,7 @@ function Home() {
           </div>
           <Link
             to="/app/checkin"
-            search={mood ? { mood } : {}}
+            search={{ mood: mood ?? undefined }}
             className="mt-4 inline-flex h-11 items-center justify-center rounded-full bg-[var(--app-accent)] px-6 text-[14px] font-semibold text-[var(--app-on-accent)]"
           >
             {todayCheckin ? "Update check-in" : "Check in Now"}
