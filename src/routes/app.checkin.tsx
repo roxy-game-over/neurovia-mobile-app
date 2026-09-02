@@ -1,10 +1,11 @@
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { format } from "date-fns";
-import { Check, Flame } from "lucide-react";
+import { ArrowLeft, ArrowRight, Check, Flame, Sparkles } from "lucide-react";
 import { useState } from "react";
 
-import { AppScreen, ScreenHeader } from "@/components/app/AppShell";
+import { AppScreenPlain, ThemeToggle } from "@/components/app/AppShell";
+import { Vi } from "@/components/app/Brand";
 import { supabase } from "@/integrations/supabase/client";
 import { useAppAuth } from "@/lib/app/auth";
 import { CHECKIN_COIN_REWARD } from "@/lib/app/progress";
@@ -17,27 +18,88 @@ export const Route = createFileRoute("/app/checkin")({
 });
 
 export const MOODS = [
-  { emoji: "🙁", label: "Bad", value: 1 },
-  { emoji: "😐", label: "Okay", value: 2 },
-  { emoji: "🙂", label: "Good", value: 3 },
-  { emoji: "😊", label: "Great", value: 4 },
-  { emoji: "😄", label: "Amazing", value: 5 },
-] as const;
-
-const SLEEP = [
-  { emoji: "😴", label: "Restful", value: 3 },
-  { emoji: "🥱", label: "Broken", value: 2 },
-  { emoji: "🌙", label: "Short", value: 1 },
+  { emoji: "😢", label: "Awful", value: 1 },
+  { emoji: "🙁", label: "Low", value: 2 },
+  { emoji: "😐", label: "Okay", value: 3 },
+  { emoji: "🙂", label: "Good", value: 4 },
+  { emoji: "😄", label: "Great", value: 5 },
 ] as const;
 
 const ENERGY = [
-  { emoji: "🔋", label: "Charged", value: 3 },
-  { emoji: "🪫", label: "Low", value: 1 },
-  { emoji: "⚡", label: "Wired", value: 2 },
+  { emoji: "🪫", label: "Drained", note: "Running on empty", value: 1 },
+  { emoji: "🔋", label: "Low", note: "Slow and steady", value: 2 },
+  { emoji: "🔋", label: "Steady", note: "Enough for today", value: 3 },
+  { emoji: "⚡", label: "Energised", note: "Ready to move", value: 4 },
+  { emoji: "✨", label: "Buzzing", note: "Hard to settle", value: 5 },
+] as const;
+
+const SLEEP = [
+  { emoji: "🌑", label: "Barely slept", note: "Under 4 hours", value: 1 },
+  { emoji: "🌘", label: "Restless", note: "Woke up often", value: 2 },
+  { emoji: "🌗", label: "Okay", note: "Some rest", value: 3 },
+  { emoji: "🌖", label: "Good", note: "Mostly restful", value: 4 },
+  { emoji: "🌕", label: "Deep rest", note: "Woke up refreshed", value: 5 },
 ] as const;
 
 export function dayOf(iso: string) {
   return format(new Date(iso), "yyyy-MM-dd");
+}
+
+type Step = 0 | 1 | 2 | 3;
+
+const STEP_META = [
+  { mascot: "base", title: "How are you feeling today?", sub: "There is no wrong answer. Just what's true right now." },
+  { mascot: "energy", title: "How is your energy level?", sub: "Energy tells us how much today can hold." },
+  { mascot: "sleep", title: "How did you sleep?", sub: "Rest shapes everything else, gently." },
+] as const;
+
+function OptionRow({
+  items,
+  selected,
+  onSelect,
+}: {
+  items: readonly { emoji: string; label: string; note?: string; value: number }[];
+  selected: number | null;
+  onSelect: (v: number) => void;
+}) {
+  return (
+    <div className="mt-6 space-y-2.5">
+      {items.map((item) => {
+        const active = selected === item.value;
+        return (
+          <button
+            key={item.value}
+            type="button"
+            onClick={() => onSelect(item.value)}
+            className="flex w-full items-center gap-4 rounded-[20px] border p-3.5 text-left transition-all active:scale-[0.99]"
+            style={{
+              borderColor: active ? "var(--app-accent)" : "var(--app-border)",
+              background: active ? "color-mix(in oklab, var(--app-accent) 14%, transparent)" : "var(--app-surface)",
+            }}
+          >
+            <span className="flex size-11 items-center justify-center rounded-2xl bg-[var(--app-surface-2)] text-2xl">
+              {item.emoji}
+            </span>
+            <span className="min-w-0 flex-1">
+              <strong className="block text-[15px] text-[var(--app-text)]">{item.label}</strong>
+              {item.note && (
+                <span className="block text-[12px] text-[var(--app-text-dim)]">{item.note}</span>
+              )}
+            </span>
+            <span
+              className="flex size-6 items-center justify-center rounded-full border"
+              style={{
+                borderColor: active ? "var(--app-accent)" : "var(--app-border)",
+                background: active ? "var(--app-accent)" : "transparent",
+              }}
+            >
+              {active && <Check className="size-3.5 text-[var(--app-on-accent)]" />}
+            </span>
+          </button>
+        );
+      })}
+    </div>
+  );
 }
 
 function CheckIn() {
@@ -62,9 +124,10 @@ function CheckIn() {
   });
 
   const todayCheckin = checkins.find((c) => dayOf(c.created_at) === today);
+  const [step, setStep] = useState<Step>(0);
   const [mood, setMood] = useState<number | null>(initialMood ?? null);
-  const [sleep, setSleep] = useState<number | null>(null);
   const [energy, setEnergy] = useState<number | null>(null);
+  const [sleep, setSleep] = useState<number | null>(null);
   const [note, setNote] = useState("");
   const [saving, setSaving] = useState(false);
 
@@ -76,6 +139,8 @@ function CheckIn() {
     streak += 1;
     cursor.setDate(cursor.getDate() - 1);
   }
+
+  const value = step === 0 ? mood : step === 1 ? energy : sleep;
 
   async function save() {
     if (!user || mood === null) return;
@@ -93,103 +158,108 @@ function CheckIn() {
     }
     await queryClient.invalidateQueries({ queryKey: ["check_ins", user.id] });
     setSaving(false);
-    void navigate({ to: "/app/home" as never });
+    setStep(3);
   }
 
-  return (
-    <AppScreen>
-      <ScreenHeader
-        title="Daily Check-in"
-        subtitle="How are you feeling today?"
-        right={
-          streak > 0 ? (
-            <span className="flex items-center gap-1 rounded-full bg-[var(--app-accent)]/12 px-2.5 py-1 text-[11px] font-bold text-[var(--app-accent)]">
-              <Flame className="size-3" /> {streak}
+  if (step === 3) {
+    return (
+      <AppScreenPlain>
+        <div className="flex flex-1 flex-col items-center justify-center px-6 text-center">
+          <Vi mood="celebrate" className="size-56" />
+          <h1 className="mt-4 text-[28px] font-bold text-[var(--app-text)]">Check-in complete</h1>
+          <p className="mt-2 text-[15px] text-[var(--app-text-dim)]">
+            Thank you for showing up for yourself today.
+          </p>
+          <div className="mt-6 flex items-center gap-3">
+            <span className="flex items-center gap-1.5 rounded-full bg-[var(--app-accent)]/15 px-3 py-1.5 text-[13px] font-bold text-[var(--app-accent)]">
+              <Sparkles className="size-4" /> +{CHECKIN_COIN_REWARD} coins
             </span>
-          ) : undefined
-        }
-      />
+            <span className="flex items-center gap-1.5 rounded-full bg-[var(--app-mint)]/15 px-3 py-1.5 text-[13px] font-bold text-[var(--app-mint)]">
+              <Flame className="size-4" /> {Math.max(streak, 1)} day streak
+            </span>
+          </div>
+          <button
+            type="button"
+            onClick={() => void navigate({ to: "/app/home" as never })}
+            className="app-btn mt-10"
+          >
+            Back to home <ArrowRight className="size-5" />
+          </button>
+        </div>
+      </AppScreenPlain>
+    );
+  }
 
-      <div className="px-5 pb-8">
-        {todayCheckin && (
-          <p className="mb-4 flex items-center justify-center gap-1.5 rounded-2xl bg-[var(--app-surface-2)] p-3 text-[13px] text-[var(--app-text-dim)]">
+  const meta = STEP_META[step]!;
+
+  return (
+    <AppScreenPlain>
+      <div className="flex items-center justify-between px-5 pt-6">
+        <button
+          type="button"
+          aria-label="Back"
+          onClick={() =>
+            step === 0 ? void navigate({ to: "/app/home" as never }) : setStep((step - 1) as Step)
+          }
+          className="flex size-10 items-center justify-center rounded-full border border-[var(--app-border)] text-[var(--app-text)]"
+        >
+          <ArrowLeft className="size-5" />
+        </button>
+        <div className="flex items-center gap-1.5">
+          {[0, 1, 2].map((i) => (
+            <span
+              key={i}
+              className="h-1.5 rounded-full transition-all"
+              style={{
+                width: i === step ? 26 : 10,
+                background: i <= step ? "var(--app-accent)" : "var(--app-border)",
+              }}
+            />
+          ))}
+        </div>
+        <ThemeToggle />
+      </div>
+
+      <div className="flex flex-1 flex-col px-5 pb-8 pt-2">
+        <Vi mood={meta.mascot} className="mx-auto size-40" />
+        <h1 className="mt-2 text-center text-[24px] font-bold leading-tight text-[var(--app-text)]">
+          {meta.title}
+        </h1>
+        <p className="mt-1.5 text-center text-[14px] text-[var(--app-text-dim)]">{meta.sub}</p>
+
+        {step === 0 && <OptionRow items={MOODS} selected={mood} onSelect={setMood} />}
+        {step === 1 && <OptionRow items={ENERGY} selected={energy} onSelect={setEnergy} />}
+        {step === 2 && (
+          <>
+            <OptionRow items={SLEEP} selected={sleep} onSelect={setSleep} />
+            <textarea
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+              rows={2}
+              placeholder="Anything you want VI to know? (optional)"
+              className="app-input mt-3 h-auto resize-none py-3.5"
+            />
+          </>
+        )}
+
+        {todayCheckin && step === 0 && (
+          <p className="mt-4 flex items-center justify-center gap-1.5 rounded-2xl bg-[var(--app-surface-2)] p-3 text-[13px] text-[var(--app-text-dim)]">
             <Check className="size-3.5 text-[var(--app-mint)]" /> You already checked in today — you can update it.
           </p>
         )}
 
-        <div className="app-card p-5">
-          <p className="text-[13px] font-semibold text-[var(--app-text-dim)]">Mood</p>
-          <div className="mt-3 flex justify-between">
-            {MOODS.map((m) => (
-              <button
-                key={m.value}
-                type="button"
-                onClick={() => setMood(m.value)}
-                className="flex flex-col items-center gap-1.5"
-              >
-                <span
-                  className={`flex size-12 items-center justify-center rounded-full text-2xl transition-all ${mood === m.value ? "scale-110 bg-[var(--app-accent)] ring-2 ring-[var(--app-accent)]" : "bg-[var(--app-surface-2)]"}`}
-                >
-                  {m.emoji}
-                </span>
-                <span
-                  className="text-[11px]"
-                  style={{ color: mood === m.value ? "var(--app-text)" : "var(--app-text-dim)" }}
-                >
-                  {m.label}
-                </span>
-              </button>
-            ))}
-          </div>
-
-          <p className="mt-6 text-[13px] font-semibold text-[var(--app-text-dim)]">How did you sleep?</p>
-          <div className="mt-2 flex gap-2">
-            {SLEEP.map((s) => (
-              <button
-                key={s.value}
-                type="button"
-                onClick={() => setSleep(s.value)}
-                className={`flex-1 rounded-xl border px-2 py-2 text-[12px] transition-all ${sleep === s.value ? "border-[var(--app-accent)] bg-[var(--app-accent)]/12 font-semibold" : "border-[var(--app-border)]"}`}
-              >
-                {s.emoji} {s.label}
-              </button>
-            ))}
-          </div>
-
-          <p className="mt-5 text-[13px] font-semibold text-[var(--app-text-dim)]">Energy right now?</p>
-          <div className="mt-2 flex gap-2">
-            {ENERGY.map((e) => (
-              <button
-                key={e.value}
-                type="button"
-                onClick={() => setEnergy(e.value)}
-                className={`flex-1 rounded-xl border px-2 py-2 text-[12px] transition-all ${energy === e.value ? "border-[var(--app-accent)] bg-[var(--app-accent)]/12 font-semibold" : "border-[var(--app-border)]"}`}
-              >
-                {e.emoji} {e.label}
-              </button>
-            ))}
-          </div>
-
-          <label className="mt-5 block">
-            <span className="text-[13px] font-semibold text-[var(--app-text-dim)]">Anything on your mind?</span>
-            <textarea
-              className="app-input mt-2 h-24 resize-none py-3"
-              value={note}
-              onChange={(e) => setNote(e.target.value)}
-              placeholder="Optional — a line for future you."
-            />
-          </label>
-
+        <div className="mt-auto pt-8">
           <button
             type="button"
-            disabled={mood === null || saving}
-            onClick={() => void save()}
-            className="app-btn mt-5 w-full border-0 disabled:opacity-40"
+            disabled={value === null || saving}
+            onClick={() => (step === 2 ? void save() : setStep((step + 1) as Step))}
+            className="app-btn"
           >
-            {saving ? "Saving…" : todayCheckin ? "Update check-in" : `Check in · +${CHECKIN_COIN_REWARD} coins`}
+            {saving ? "Saving…" : step === 2 ? "Finish check-in" : "Continue"}
+            <ArrowRight className="size-5" />
           </button>
         </div>
       </div>
-    </AppScreen>
+    </AppScreenPlain>
   );
 }

@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ArrowLeft, ArrowRight, Check, ChevronRight, Sparkles } from "lucide-react";
 import { useState } from "react";
 
-import vi from "@/assets/vi-mascot.png.asset.json";
+import { VI } from "@/components/app/Brand";
 import { AppScreenPlain, Wordmark } from "@/components/app/AppShell";
 import { Button } from "@/components/ui/button";
 import {
@@ -100,7 +100,7 @@ function Onboarding() {
                 From <span className="text-[var(--app-rose)]">concern</span> to{" "}
                 <span className="text-[var(--app-mint)]">care</span>.
               </p>
-              <img src={vi.url} alt="VI holding a heart" className="anim-float mx-auto my-6 size-56 object-contain" />
+              <img src={VI.base} alt="VI holding a heart" className="anim-float mx-auto my-6 size-56 object-contain" />
               <div className="app-card space-y-4 p-4 text-left">
                 {WELCOME_PILLARS.map((item) => (
                   <div key={item.title} className="flex items-center gap-4">
@@ -129,7 +129,7 @@ function Onboarding() {
                 I’m here to listen, support you, and walk with you every step of the way.
               </p>
               <div className="relative mt-5">
-                <img src={vi.url} alt="VI waving" className="anim-float mx-auto size-48 object-contain" />
+                <img src={VI.base} alt="VI waving" className="anim-float mx-auto size-48 object-contain" />
                 <p className="app-card absolute right-0 top-0 max-w-[52%] p-3 text-[13px]">
                   I’m excited to be part of your journey! <span aria-hidden>✨</span>
                 </p>
@@ -219,7 +219,7 @@ function Onboarding() {
                     Small steps today,<br />a better you tomorrow. <span aria-hidden>💜</span>
                   </p>
                 </div>
-                <img src={vi.url} alt="VI with a seedling" className="anim-float size-36 object-contain" />
+                <img src={VI.base} alt="VI with a seedling" className="anim-float size-36 object-contain" />
               </div>
               <div className="mt-6 space-y-3">
                 {JOURNEY_FEATURES.map((item) => (

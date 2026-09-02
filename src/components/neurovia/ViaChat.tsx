@@ -2,7 +2,7 @@ import { useChat } from "@ai-sdk/react";
 import { DefaultChatTransport, type UIMessage } from "ai";
 import { useEffect, useRef, useState } from "react";
 
-import vi from "@/assets/vi-mascot.png.asset.json";
+import { VI } from "@/components/app/Brand";
 import {
   Conversation,
   ConversationContent,
@@ -117,7 +117,7 @@ function ChatWindow({
   return (
     <div className="overflow-hidden rounded-[28px] bg-white shadow-soft">
       <div className="flex items-center gap-3 border-b border-[color-mix(in_oklab,var(--purple)_10%,transparent)] px-6 py-4">
-        <img src={vi.url} alt="" aria-hidden="true" width={40} height={40} className="size-10" />
+        <img src={VI.base} alt="" aria-hidden="true" width={40} height={40} className="size-10" />
         <div>
           <p className="text-[15px] font-semibold text-ink">VI</p>
           <p className="text-[12px] text-ink-muted">
@@ -131,7 +131,7 @@ function ChatWindow({
           {messages.length === 0 && (
             <div className="mx-auto max-w-[440px] py-6 text-center">
               <img
-                src={vi.url}
+                src={VI.base}
                 alt="VI, the Neurovia companion"
                 width={140}
                 height={150}
