@@ -6,6 +6,7 @@ import { useState } from "react";
 
 import { AppScreenPlain, ThemeToggle } from "@/components/app/AppShell";
 import { Vi } from "@/components/app/Brand";
+import { IconChip, type AppIconKey } from "@/components/app/Icons";
 import { supabase } from "@/integrations/supabase/client";
 import { useAppAuth } from "@/lib/app/auth";
 import { CHECKIN_COIN_REWARD } from "@/lib/app/progress";
