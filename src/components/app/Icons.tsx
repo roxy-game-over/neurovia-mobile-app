@@ -85,6 +85,22 @@ export const APP_ICONS = {
   locked: { icon: Lock, tint: "var(--app-text-dim)" },
   spark: { icon: Sparkle, tint: "var(--app-gold)" },
   energy: { icon: Activity, tint: "var(--app-gold)" },
+  mood1: { icon: CloudRain, tint: "var(--app-rose)" },
+  mood2: { icon: Frown, tint: "var(--app-rose)" },
+  mood3: { icon: Meh, tint: "var(--app-gold)" },
+  mood4: { icon: Smile, tint: "var(--app-mint)" },
+  mood5: { icon: Laugh, tint: "var(--app-mint)" },
+  energy1: { icon: BatteryLow, tint: "var(--app-rose)" },
+  energy2: { icon: BatteryMedium, tint: "var(--app-gold)" },
+  energy3: { icon: BatteryFull, tint: "var(--app-mint)" },
+  energy4: { icon: Zap, tint: "var(--app-gold)" },
+  energy5: { icon: Sparkles, tint: "var(--app-accent)" },
+  sleep1: { icon: CloudMoon, tint: "var(--app-rose)" },
+  sleep2: { icon: Moon, tint: "var(--app-gold)" },
+  sleep3: { icon: MoonStar, tint: "var(--app-accent)" },
+  sleep4: { icon: Sunrise, tint: "var(--app-mint)" },
+  sleep5: { icon: Sunrise, tint: "var(--app-gold)" },
+
 } satisfies Record<string, { icon: LucideIcon; tint: string }>;
 
 export type AppIconKey = keyof typeof APP_ICONS;
