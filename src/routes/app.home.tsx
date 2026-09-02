@@ -74,7 +74,7 @@ function Home() {
               )}
             </h2>
             <p className="mt-1 text-[14px] text-[var(--app-text-dim)]">
-              You’ve got this. We’re here for you.
+              Check in, understand what you’re carrying, and do one small thing about it.
             </p>
           </div>
           <div className="app-card flex items-center gap-2 px-3 py-2">
@@ -92,9 +92,9 @@ function Home() {
         {/* Daily check-in */}
         <div className="app-card relative mt-5 overflow-hidden p-5">
           <div className="max-w-[62%]">
-            <h3 className="text-[19px] font-bold">Daily Check-in</h3>
+            <h3 className="text-[19px] font-bold">Daily check-in</h3>
             <p className="mt-1 text-[13px] text-[var(--app-text-dim)]">
-              {todayCheckin ? "Checked in — thank you for showing up." : "How are you feeling today?"}
+              {todayCheckin ? "Checked in — mood, energy and sleep saved." : "Mood, energy, sleep — 30 seconds."}
             </p>
           </div>
           <img
@@ -144,7 +144,7 @@ function Home() {
         {/* Today's plan */}
         <div className="app-card mt-4 p-4">
           <div className="flex items-center justify-between">
-            <h3 className="text-[17px] font-bold">Today’s Plan</h3>
+            <h3 className="text-[17px] font-bold">Today’s small steps</h3>
             <Link to="/app/practice" className="flex items-center gap-1 text-[13px] text-[var(--app-accent)]">
               See All <ChevronRight className="size-4" />
             </Link>
@@ -201,10 +201,10 @@ function Home() {
         {/* Explore */}
         <div className="mt-4 grid grid-cols-4 gap-2.5">
           {([
-            { to: "/app/library", label: "Library", icon: "library" },
-            { to: "/app/exercises", label: "Exercises", icon: "exercises" },
+            { to: "/app/library", label: "Wellness", icon: "library" },
+            { to: "/app/exercises", label: "Practise", icon: "exercises" },
             { to: "/app/insights", label: "Insights", icon: "insights" },
-            { to: "/app/personality", label: "My Space", icon: "space" },
+            { to: "/app/personality", label: "Personality", icon: "space" },
           ] as const).map((item) => (
             <Link
               key={item.to}
@@ -220,10 +220,9 @@ function Home() {
         {/* Garden */}
         <div className="app-card relative mt-4 overflow-hidden p-4">
           <div className="max-w-[62%]">
-            <h3 className="text-[17px] font-bold">My Garden</h3>
+            <h3 className="text-[17px] font-bold">The Garden</h3>
             <p className="mt-1 text-[13px] leading-snug text-[var(--app-text-dim)]">
-              Every step you finish waters a seed. You’ve grown {practices}{" "}
-              {practices === 1 ? "step" : "steps"} so far.
+              Every check-in, lesson, practice and mind game you finish earns care for your seed. {practices} so far.
             </p>
             <div className="mt-3 flex items-center gap-2">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--app-surface-2)] px-2.5 py-1 text-[11px] font-semibold">
@@ -254,7 +253,7 @@ function Home() {
             <IconChip name="psychologist" size={40} />
             <strong className="mt-2 block text-[14px]">Talk to Therapist</strong>
             <span className="mt-1 block text-[11px] leading-snug text-[var(--app-text-dim)]">
-              Professional support when you need it.
+              Psychologists, psychiatrists and crisis support, one tap away.
             </span>
             <span className="mt-auto pt-3">
               <span className="inline-flex h-8 items-center rounded-full bg-[var(--app-accent)] px-3 text-[12px] font-semibold text-[var(--app-on-accent)]">
@@ -266,7 +265,7 @@ function Home() {
             <IconChip name="games" size={40} />
             <strong className="mt-2 block text-[14px]">Play &amp; Grow</strong>
             <span className="mt-1 block text-[11px] leading-snug text-[var(--app-text-dim)]">
-              Mind games that help you heal.
+              Mind games that grow your Garden.
             </span>
             <span className="mt-auto pt-3">
               <span className="inline-flex h-8 items-center rounded-full bg-[var(--app-accent)] px-3 text-[12px] font-semibold text-[var(--app-on-accent)]">
@@ -279,9 +278,9 @@ function Home() {
         <Link to="/app/via" className="app-card mt-3 flex items-center gap-3 p-4">
           <img src={VI.classic} alt="" loading="lazy" className="size-14 shrink-0 object-contain" />
           <span className="min-w-0 flex-1">
-            <strong className="block text-[14px] text-[var(--app-accent)]">VIA welcomes you</strong>
+            <strong className="block text-[14px] text-[var(--app-accent)]">Meet VIA</strong>
             <span className="text-[12px] text-[var(--app-text-dim)]">
-              I’m here to listen, guide and support you anytime.
+              A calm companion for the moments you don’t know how to explain.
             </span>
           </span>
           <span className="inline-flex h-9 shrink-0 items-center rounded-full bg-[var(--app-accent)] px-4 text-[12px] font-semibold text-[var(--app-on-accent)]">
