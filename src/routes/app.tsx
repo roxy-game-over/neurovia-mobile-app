@@ -63,6 +63,7 @@ function AuthGate({ children }: { children: ReactNode }) {
 
   const isAuthRoute = pathname.startsWith("/app/auth");
   const isOnboarding = pathname.startsWith("/app/onboarding");
+  const isAccount = pathname.startsWith("/app/account");
 
   useEffect(() => {
     if (loading) return;
@@ -71,14 +72,18 @@ function AuthGate({ children }: { children: ReactNode }) {
       return;
     }
     if (!profile) return;
-    if (!profile.onboarding_completed && !isOnboarding) {
+    if (!profile.consent_accepted && !isAccount) {
+      void navigate({ to: "/app/account" as never, replace: true });
+      return;
+    }
+    if (profile.consent_accepted && !profile.onboarding_completed && !isOnboarding) {
       void navigate({ to: "/app/onboarding" as never, replace: true });
       return;
     }
-    if (profile.onboarding_completed && (isAuthRoute || isOnboarding)) {
+    if (profile.onboarding_completed && (isAuthRoute || isOnboarding || isAccount)) {
       void navigate({ to: "/app/home" as never, replace: true });
     }
-  }, [loading, user, profile, isAuthRoute, isOnboarding, navigate]);
+  }, [loading, user, profile, isAuthRoute, isOnboarding, isAccount, navigate]);
 
   if (loading || (user && !profile)) {
     return (
