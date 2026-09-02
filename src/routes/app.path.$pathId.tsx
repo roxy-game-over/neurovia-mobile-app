@@ -34,7 +34,7 @@ function PathScreen() {
   if (!path) {
     return (
       <AppScreenPlain>
-        <div className="flex flex-1 items-center justify-center px-6 text-center text-[var(--app-text-dim)}">
+        <div className="flex flex-1 items-center justify-center px-6 text-center text-[var(--app-text-dim)]">
           <p>That path isn't available.</p>
         </div>
       </AppScreenPlain>

@@ -14,7 +14,7 @@ export type Destination = {
 
 export const DESTINATIONS: Destination[] = [
   { to: "/app/home", label: "Home", icon: Home },
-  { to: "/app/journey", label: "Paths", icon: Compass },
+  { to: "/app/paths", label: "Paths", icon: Compass },
   { to: "/app/checkin", label: "Check-in", icon: Smile },
   { to: "/app/garden", label: "Garden", icon: Leaf },
   { to: "/app/gaming", label: "Gaming", icon: Gamepad2 },
