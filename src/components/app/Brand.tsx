@@ -44,12 +44,11 @@ export function LeafMark({
   return (
     <svg viewBox="0 0 24 24" aria-hidden className={className} style={style} fill="none">
       <path
-        d="M20.5 3.5c-8.2-.7-14.4 2.4-15.7 8.1-.7 3 .3 5.8 2.2 7.5C9.4 14 13 10.7 17.6 9c-3.7 2.4-6.6 5.7-8 10.9"
-        stroke="currentColor"
-        strokeWidth="2.1"
-        strokeLinecap="round"
-        strokeLinejoin="round"
+        d="M12 2.8c5.2 3.2 8 7.2 8 11.1a8 8 0 1 1-16 0c0-3.9 2.8-7.9 8-11.1Z"
+        fill="currentColor"
+        opacity="0.9"
       />
+      <path d="M12 6.5v12" stroke="var(--app-bg)" strokeWidth="1.4" strokeLinecap="round" />
     </svg>
   );
 }
