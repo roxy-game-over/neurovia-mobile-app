@@ -113,9 +113,13 @@ function Home() {
                   className="flex flex-col items-center gap-1"
                 >
                   <span
-                    className={`flex size-10 items-center justify-center rounded-full text-xl transition-all ${on ? "scale-110 bg-[var(--app-accent)]" : "bg-[var(--app-surface-2)]"}`}
+                    className={`flex size-10 items-center justify-center rounded-full transition-all ${on ? "scale-110 bg-[var(--app-accent)]" : "bg-[var(--app-surface-2)]"}`}
                   >
-                    {m.emoji}
+                    <AppIcon
+                      name={m.icon}
+                      size={19}
+                      {...(on ? { color: "var(--app-on-accent)" } : {})}
+                    />
                   </span>
                   <span
                     className="text-[10px]"
@@ -126,6 +130,7 @@ function Home() {
                 </button>
               );
             })}
+
           </div>
           <Link
             to="/app/checkin"
