@@ -107,8 +107,8 @@ function PathScreen() {
                   </span>
                   <span className="min-w-0 flex-1">
                     <strong className="block text-[14px] text-[var(--app-text)]">{s.title}</strong>
-                    <span className="text-[11.5px] capitalize text-[var(--app-text-dim)]">
-                      {s.kind} · {s.minutes} min
+                    <span className="text-[11.5px] text-[var(--app-text-dim)]">
+                      <span className="capitalize">{s.kind}</span> · {s.minutes} min
                     </span>
                   </span>
                   {i < index && <Check className="size-4 text-[var(--app-mint)]" />}
