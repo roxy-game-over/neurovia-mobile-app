@@ -80,7 +80,7 @@ function AuthGate({ children }: { children: ReactNode }) {
       void navigate({ to: "/app/onboarding" as never, replace: true });
       return;
     }
-    if (profile.onboarding_completed && (isAuthRoute || isOnboarding || isAccount)) {
+    if (profile.consent_accepted && profile.onboarding_completed && (isAuthRoute || isOnboarding || isAccount)) {
       void navigate({ to: "/app/home" as never, replace: true });
     }
   }, [loading, user, profile, isAuthRoute, isOnboarding, isAccount, navigate]);
