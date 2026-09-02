@@ -1,4 +1,4 @@
-import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
+import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Eye, EyeOff, Heart, Mail, Lock, ArrowRight, Chrome } from "lucide-react";
 import { useState } from "react";
 
@@ -57,8 +57,8 @@ function AppAuth() {
     <AppScreenPlain>
       <div className="relative flex flex-1 flex-col px-6 pb-8 pt-12">
         <div className="flex items-center justify-between">
-          <Link to="/" className="flex items-center gap-2 text-[14px] text-[var(--app-text-dim)]"><Heart className="size-4 text-[var(--app-rose)]" /> Neurovia</Link>
-          <Link to="/" className="text-[14px] text-[var(--app-text-dim)]">Back to site</Link>
+          <span className="flex items-center gap-2 text-[14px] text-[var(--app-text-dim)]"><Heart className="size-4 text-[var(--app-rose)]" /> Neurovia</span>
+          <a href="https://neurovia-ai-in.lovable.app" target="_blank" rel="noreferrer" className="text-[14px] text-[var(--app-text-dim)]">Back to site</a>
         </div>
         <div className="flex flex-1 flex-col justify-center py-10">
           <img src={vi.url} alt="VI, your Neurovia companion" className="mx-auto mb-7 size-28 object-contain" />
