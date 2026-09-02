@@ -1,3 +1,4 @@
+import type { ViMood } from "@/components/app/Brand";
 import type { AppIconKey } from "@/components/app/Icons";
 
 /** The seed → sanctuary journey, exactly as described on neurovia-ai.in. */
