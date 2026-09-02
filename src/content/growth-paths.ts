@@ -20,11 +20,11 @@ export type GrowthPath = {
 export const GROWTH_PATHS: GrowthPath[] = [
   {
     id: "overthinking",
-    name: "Quiet the Overthinking",
-    tagline: "Loosen the loops your mind keeps running.",
+    name: "Overthinking",
+    tagline: "Quiet the mental loops.",
     emoji: "🌀",
     accent: "var(--app-accent)",
-    days: 7,
+    days: 14,
     focus: ["Rumination", "Worry spirals", "Decision fatigue"],
     steps: [
       {
@@ -50,11 +50,11 @@ export const GROWTH_PATHS: GrowthPath[] = [
   },
   {
     id: "stress",
-    name: "Steady Under Stress",
-    tagline: "Come back to your body when pressure builds.",
+    name: "Stress & Burnout",
+    tagline: "Come back down.",
     emoji: "🌊",
     accent: "var(--app-mint)",
-    days: 5,
+    days: 14,
     focus: ["Overwhelm", "Pressure", "Tight chest"],
     steps: [
       {
@@ -80,11 +80,11 @@ export const GROWTH_PATHS: GrowthPath[] = [
   },
   {
     id: "sleep",
-    name: "Kinder Nights",
+    name: "Sleep",
     tagline: "A gentler landing at the end of the day.",
     emoji: "🌙",
     accent: "var(--app-rose)",
-    days: 7,
+    days: 14,
     focus: ["Racing thoughts", "Late scrolling", "Restless sleep"],
     steps: [
       {
@@ -109,12 +109,72 @@ export const GROWTH_PATHS: GrowthPath[] = [
     ],
   },
   {
+    id: "anxiety",
+    name: "Anxiety",
+    tagline: "Steady the body first.",
+    emoji: "🫧",
+    accent: "var(--app-mint)",
+    days: 14,
+    focus: ["What anxiety does physically", "Grounding when it spikes", "Shrinking the what-ifs"],
+    steps: [
+      {
+        title: "What anxiety does physically",
+        kind: "learn",
+        minutes: 3,
+        body: "Anxiety is a body event before it is a thought event — breath shortens, muscles brace, attention narrows. Naming the physical part first takes some of its authority away.",
+      },
+      {
+        title: "Grounding when it spikes",
+        kind: "practice",
+        minutes: 3,
+        body: "Run a 5-4-3-2-1 senses sweep. You are not trying to feel calm; you are trying to be here.",
+      },
+      {
+        title: "Shrink the what-if",
+        kind: "reflect",
+        minutes: 2,
+        body: "Write the worst-case sentence, then the most likely one, right underneath it.",
+        prompt: "What is the most likely version of the thing you are afraid of?",
+      },
+    ],
+  },
+  {
+    id: "procrastination",
+    name: "Procrastination",
+    tagline: "Start before you feel ready.",
+    emoji: "⏳",
+    accent: "var(--app-gold)",
+    days: 18,
+    focus: ["Why you avoid the task", "The two-minute start", "Finishing without perfectionism"],
+    steps: [
+      {
+        title: "Why you avoid the task",
+        kind: "learn",
+        minutes: 3,
+        body: "Procrastination is rarely laziness. It is usually a feeling you would rather not have — boredom, fear of doing it badly, or not knowing where to begin.",
+      },
+      {
+        title: "The two-minute start",
+        kind: "practice",
+        minutes: 2,
+        body: "Set a timer for two minutes and do the smallest visible piece of the task. Stopping after is allowed.",
+      },
+      {
+        title: "Finish without perfectionism",
+        kind: "reflect",
+        minutes: 2,
+        body: "Perfectionism is procrastination wearing better clothes.",
+        prompt: "What would 'good enough' look like for this task today?",
+      },
+    ],
+  },
+  {
     id: "confidence",
-    name: "Quiet Confidence",
+    name: "Self-Confidence",
     tagline: "Speak to yourself the way you would to a friend.",
     emoji: "🌱",
     accent: "var(--app-accent)",
-    days: 10,
+    days: 14,
     focus: ["Self-criticism", "Comparison", "Self-doubt"],
     steps: [
       {
