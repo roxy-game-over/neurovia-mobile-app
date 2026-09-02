@@ -13,6 +13,10 @@ export type AppProfile = {
   coins: number;
   garden_stage: string;
   practices_completed: number;
+  date_of_birth: string | null;
+  gender: string | null;
+  location: string | null;
+  consent_accepted: boolean;
 };
 
 type AuthCtx = {

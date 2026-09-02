@@ -40,6 +40,67 @@ export const VI_PROMISES = [
   { title: "I grow with you", body: "Celebrating small wins every day", emoji: "✨" },
 ];
 
+/** "Together, we can…" strip on the Meet VI screen. */
+export const TOGETHER_WE_CAN = [
+  { label: "Understand your mind", emoji: "💗" },
+  { label: "Build healthy habits", emoji: "🪷" },
+  { label: "Overcome challenges", emoji: "🌱" },
+  { label: "Create a life you love", emoji: "⭐" },
+];
+
+/** Final onboarding screen: what the journey gives you. */
+export const JOURNEY_FEATURES = [
+  { title: "Personalized experience", body: "Content and tools tailored just for you.", emoji: "⭐" },
+  { title: "Scientifically backed", body: "Evidence-based methods to support your mind.", emoji: "🧠" },
+  { title: "Track your progress", body: "Monitor your growth and celebrate wins.", emoji: "📊" },
+  { title: "Build healthy habits", body: "Daily practices for a balanced mind.", emoji: "🪷" },
+  { title: "Support when you need it", body: "Guided support and a caring community.", emoji: "🤝" },
+  { title: "Your privacy matters", body: "Your data is safe and always protected.", emoji: "🔒" },
+];
+
+/** Wellbeing notice shown before account consent. */
+export const WELLBEING_NOTICES = [
+  {
+    title: "Neurovia is here to support you",
+    body: "We provide tools for self-reflection, well-being and personal growth.",
+    emoji: "🛡️",
+  },
+  {
+    title: "Not a replacement for therapy",
+    body: "We are not a substitute for professional medical or mental health care.",
+    emoji: "💗",
+  },
+  {
+    title: "Your privacy is our priority",
+    body: "Your data is encrypted and never shared without your permission.",
+    emoji: "🔒",
+  },
+  {
+    title: "In case of crisis",
+    body: "If you are in immediate danger, please seek help right away.",
+    emoji: "❗",
+  },
+];
+
+export const CONSENT_ITEMS = [
+  "I understand Neurovia is not a substitute for professional medical advice.",
+  "I will not rely on Neurovia for emergency or crisis situations.",
+  "I understand my data is used to personalize my experience.",
+  "I am 18 years or older.",
+  "I agree to the Terms of Use and Privacy Policy.",
+];
+
+export const GENDERS = ["Female", "Male", "Non-binary", "Prefer not to say"] as const;
+
+/** Today's plan strip on the home dashboard. */
+export const TODAYS_PLAN = [
+  { id: "breathe", label: "Breathe", meta: "5 min", emoji: "🪷", to: "/app/practice" },
+  { id: "journal", label: "Journal", meta: "10 min", emoji: "📖", to: "/app/practice" },
+  { id: "meditate", label: "Meditate", meta: "10 min", emoji: "🧘", to: "/app/practice" },
+  { id: "sleep", label: "Sleep", meta: "8 hrs", emoji: "🌙", to: "/app/practice" },
+  { id: "focus", label: "Focus", meta: "25 min", emoji: "🧭", to: "/app/practice" },
+] as const;
+
 export const JOURNEY_STAGES = [
   "Concern",
   "Understand",

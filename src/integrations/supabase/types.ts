@@ -18,11 +18,15 @@ export type Database = {
         Row: {
           coins: number
           concerns: string[]
+          consent_accepted: boolean
           created_at: string
+          date_of_birth: string | null
           display_name: string | null
           garden_stage: string
+          gender: string | null
           goals: string[]
           id: string
+          location: string | null
           onboarding_completed: boolean
           practices_completed: number
           theme: string
@@ -31,11 +35,15 @@ export type Database = {
         Insert: {
           coins?: number
           concerns?: string[]
+          consent_accepted?: boolean
           created_at?: string
+          date_of_birth?: string | null
           display_name?: string | null
           garden_stage?: string
+          gender?: string | null
           goals?: string[]
           id: string
+          location?: string | null
           onboarding_completed?: boolean
           practices_completed?: number
           theme?: string
@@ -44,11 +52,15 @@ export type Database = {
         Update: {
           coins?: number
           concerns?: string[]
+          consent_accepted?: boolean
           created_at?: string
+          date_of_birth?: string | null
           display_name?: string | null
           garden_stage?: string
+          gender?: string | null
           goals?: string[]
           id?: string
+          location?: string | null
           onboarding_completed?: boolean
           practices_completed?: number
           theme?: string
