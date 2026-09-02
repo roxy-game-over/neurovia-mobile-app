@@ -14,16 +14,188 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      app_profiles: {
+        Row: {
+          coins: number
+          concerns: string[]
+          created_at: string
+          display_name: string | null
+          garden_stage: string
+          goals: string[]
+          id: string
+          onboarding_completed: boolean
+          practices_completed: number
+          theme: string
+          updated_at: string
+        }
+        Insert: {
+          coins?: number
+          concerns?: string[]
+          created_at?: string
+          display_name?: string | null
+          garden_stage?: string
+          goals?: string[]
+          id: string
+          onboarding_completed?: boolean
+          practices_completed?: number
+          theme?: string
+          updated_at?: string
+        }
+        Update: {
+          coins?: number
+          concerns?: string[]
+          created_at?: string
+          display_name?: string | null
+          garden_stage?: string
+          goals?: string[]
+          id?: string
+          onboarding_completed?: boolean
+          practices_completed?: number
+          theme?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
+      check_ins: {
+        Row: {
+          created_at: string
+          energy: number | null
+          id: string
+          mood: number
+          note: string | null
+          sleep: number | null
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          energy?: number | null
+          id?: string
+          mood: number
+          note?: string | null
+          sleep?: number | null
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          energy?: number | null
+          id?: string
+          mood?: number
+          note?: string | null
+          sleep?: number | null
+          user_id?: string
+        }
+        Relationships: []
+      }
+      journal_entries: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          kind: string
+          user_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          kind?: string
+          user_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          kind?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          created_at: string
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      via_conversations: {
+        Row: {
+          created_at: string
+          id: string
+          last_active_at: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          last_active_at?: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          last_active_at?: string
+        }
+        Relationships: []
+      }
+      via_messages: {
+        Row: {
+          conversation_id: string
+          created_at: string
+          id: string
+          parts: Json
+          role: string
+        }
+        Insert: {
+          conversation_id: string
+          created_at?: string
+          id?: string
+          parts: Json
+          role: string
+        }
+        Update: {
+          conversation_id?: string
+          created_at?: string
+          id?: string
+          parts?: Json
+          role?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "via_messages_conversation_id_fkey"
+            columns: ["conversation_id"]
+            isOneToOne: false
+            referencedRelation: "via_conversations"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +322,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "user"],
+    },
   },
 } as const
