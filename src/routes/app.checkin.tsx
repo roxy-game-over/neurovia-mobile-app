@@ -59,7 +59,7 @@ function OptionRow({
   selected,
   onSelect,
 }: {
-  items: readonly { emoji: string; label: string; note?: string; value: number }[];
+  items: readonly { icon: AppIconKey; label: string; note?: string; value: number }[];
   selected: number | null;
   onSelect: (v: number) => void;
 }) {
@@ -78,9 +78,8 @@ function OptionRow({
               background: active ? "color-mix(in oklab, var(--app-accent) 14%, transparent)" : "var(--app-surface)",
             }}
           >
-            <span className="flex size-11 items-center justify-center rounded-2xl bg-[var(--app-surface-2)] text-2xl">
-              {item.emoji}
-            </span>
+            <IconChip name={item.icon} size={44} />
+
             <span className="min-w-0 flex-1">
               <strong className="block text-[15px] text-[var(--app-text)]">{item.label}</strong>
               {item.note && (
