@@ -355,3 +355,26 @@
 .app-input:focus {
   border-color: var(--app-accent);
 }
+
+/* Unlayered overrides: these win over shadcn Button variant utilities so app
+   buttons are always legible (no white-on-white until hover). */
+.app-btn {
+  background: linear-gradient(135deg, var(--app-accent), var(--app-accent-strong));
+  color: var(--app-on-accent);
+  border: 0;
+}
+.app-btn:hover {
+  background: linear-gradient(135deg, var(--app-accent), var(--app-accent-strong));
+  color: var(--app-on-accent);
+  filter: brightness(1.06);
+}
+.app-btn-quiet {
+  background: var(--app-surface);
+  color: var(--app-text);
+  border: 1px solid var(--app-border);
+}
+.app-btn-quiet:hover {
+  background: var(--app-surface-2);
+  color: var(--app-text);
+  border-color: var(--app-accent);
+}

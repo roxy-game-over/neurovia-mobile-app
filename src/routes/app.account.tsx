@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { ArrowLeft, Check, Lock, MapPin, ShieldCheck } from "lucide-react";
 import { useState } from "react";
 
-import vi from "@/assets/vi-mascot.png.asset.json";
+import { VI } from "@/components/app/Brand";
 import { AppScreenPlain } from "@/components/app/AppShell";
 import { Button } from "@/components/ui/button";
 import { CONSENT_ITEMS, GENDERS, WELLBEING_NOTICES } from "@/content/app-onboarding";
@@ -82,7 +82,7 @@ function AccountSetup() {
           <section className="flex-1 pt-7">
             <h1 className="text-[30px] font-bold leading-tight">Create your account</h1>
             <p className="mt-1 text-[15px] text-[var(--app-text-dim)]">Let’s get to know you better</p>
-            <img src={vi.url} alt="" className="mx-auto my-6 size-28 rounded-full object-contain" />
+            <img src={VI.base} alt="" className="mx-auto my-6 size-28 rounded-full object-contain" />
 
             <div className="space-y-4">
               <label className="block">

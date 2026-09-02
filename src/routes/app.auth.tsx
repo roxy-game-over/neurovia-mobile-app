@@ -2,7 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { Apple, ArrowLeft, ArrowRight, Chrome, Eye, EyeOff, Lock, Mail } from "lucide-react";
 import { useState } from "react";
 
-import vi from "@/assets/vi-mascot.png.asset.json";
+import { VI } from "@/components/app/Brand";
 import { AppScreenPlain, Wordmark } from "@/components/app/AppShell";
 import { Button } from "@/components/ui/button";
 import { lovable } from "@/integrations/lovable";
@@ -84,7 +84,7 @@ function AppAuth() {
           </p>
 
           <img
-            src={vi.url}
+            src={VI.base}
             alt="VI, your Neurovia companion"
             className="anim-float mx-auto my-7 size-52 object-contain"
           />
@@ -99,30 +99,16 @@ function AppAuth() {
 
           {view === "choices" ? (
             <div className="mt-8 space-y-3">
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => void oauth("google")}
-                className="app-btn-quiet border-[var(--app-border)]"
-              >
-                <Chrome className="size-5" /> Continue with Google
-              </Button>
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => void oauth("apple")}
-                className="app-btn-quiet border-[var(--app-border)]"
-              >
-                <Apple className="size-5" /> Continue with Apple
-              </Button>
-              <Button
-                type="button"
-                variant="outline"
-                onClick={() => setView("email")}
-                className="app-btn-quiet border-[var(--app-border)]"
-              >
-                <Mail className="size-5" /> Continue with Email
-              </Button>
+              <button type="button" onClick={() => void oauth("google")} className="app-btn-quiet">
+                <Chrome className="size-5 text-[var(--app-accent)]" /> Continue with Google
+              </button>
+              <button type="button" onClick={() => void oauth("apple")} className="app-btn-quiet">
+                <Apple className="size-5 text-[var(--app-text)]" /> Continue with Apple
+              </button>
+              <button type="button" onClick={() => setView("email")} className="app-btn-quiet">
+                <Mail className="size-5 text-[var(--app-mint)]" /> Continue with Email
+              </button>
+
               {error && (
                 <p role="alert" className="text-center text-[13px] text-[var(--app-rose)]">
                   {error}

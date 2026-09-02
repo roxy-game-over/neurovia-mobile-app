@@ -16,15 +16,21 @@ import { Route as AppAccountRouteImport } from './routes/app.account'
 import { Route as AppAuthRouteImport } from './routes/app.auth'
 import { Route as AppCareRouteImport } from './routes/app.care'
 import { Route as AppCheckinRouteImport } from './routes/app.checkin'
+import { Route as AppExercisesRouteImport } from './routes/app.exercises'
 import { Route as AppGamingRouteImport } from './routes/app.gaming'
 import { Route as AppGardenRouteImport } from './routes/app.garden'
 import { Route as AppHomeRouteImport } from './routes/app.home'
+import { Route as AppInsightsRouteImport } from './routes/app.insights'
 import { Route as AppJourneyRouteImport } from './routes/app.journey'
+import { Route as AppLibraryRouteImport } from './routes/app.library'
 import { Route as AppOnboardingRouteImport } from './routes/app.onboarding'
+import { Route as AppPathsRouteImport } from './routes/app.paths'
+import { Route as AppPersonalityRouteImport } from './routes/app.personality'
 import { Route as AppPracticeRouteImport } from './routes/app.practice'
 import { Route as AppProfileRouteImport } from './routes/app.profile'
 import { Route as AppSafetyRouteImport } from './routes/app.safety'
 import { Route as AppViaRouteImport } from './routes/app.via'
+import { Route as AppPathPathIdRouteImport } from './routes/app.path.$pathId'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -61,6 +67,11 @@ const AppCheckinRoute = AppCheckinRouteImport.update({
   path: '/checkin',
   getParentRoute: () => AppRoute,
 } as any)
+const AppExercisesRoute = AppExercisesRouteImport.update({
+  id: '/exercises',
+  path: '/exercises',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppGamingRoute = AppGamingRouteImport.update({
   id: '/gaming',
   path: '/gaming',
@@ -76,14 +87,34 @@ const AppHomeRoute = AppHomeRouteImport.update({
   path: '/home',
   getParentRoute: () => AppRoute,
 } as any)
+const AppInsightsRoute = AppInsightsRouteImport.update({
+  id: '/insights',
+  path: '/insights',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppJourneyRoute = AppJourneyRouteImport.update({
   id: '/journey',
   path: '/journey',
   getParentRoute: () => AppRoute,
 } as any)
+const AppLibraryRoute = AppLibraryRouteImport.update({
+  id: '/library',
+  path: '/library',
+  getParentRoute: () => AppRoute,
+} as any)
 const AppOnboardingRoute = AppOnboardingRouteImport.update({
   id: '/onboarding',
   path: '/onboarding',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPathsRoute = AppPathsRouteImport.update({
+  id: '/paths',
+  path: '/paths',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppPersonalityRoute = AppPersonalityRouteImport.update({
+  id: '/personality',
+  path: '/personality',
   getParentRoute: () => AppRoute,
 } as any)
 const AppPracticeRoute = AppPracticeRouteImport.update({
@@ -106,6 +137,11 @@ const AppViaRoute = AppViaRouteImport.update({
   path: '/via',
   getParentRoute: () => AppRoute,
 } as any)
+const AppPathPathIdRoute = AppPathPathIdRouteImport.update({
+  id: '/path/$pathId',
+  path: '/path/$pathId',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -115,15 +151,21 @@ export interface FileRoutesByFullPath {
   '/app/auth': typeof AppAuthRoute
   '/app/care': typeof AppCareRoute
   '/app/checkin': typeof AppCheckinRoute
+  '/app/exercises': typeof AppExercisesRoute
   '/app/gaming': typeof AppGamingRoute
   '/app/garden': typeof AppGardenRoute
   '/app/home': typeof AppHomeRoute
+  '/app/insights': typeof AppInsightsRoute
   '/app/journey': typeof AppJourneyRoute
+  '/app/library': typeof AppLibraryRoute
   '/app/onboarding': typeof AppOnboardingRoute
+  '/app/paths': typeof AppPathsRoute
+  '/app/personality': typeof AppPersonalityRoute
   '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
   '/app/safety': typeof AppSafetyRoute
   '/app/via': typeof AppViaRoute
+  '/app/path/$pathId': typeof AppPathPathIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -133,15 +175,21 @@ export interface FileRoutesByTo {
   '/app/auth': typeof AppAuthRoute
   '/app/care': typeof AppCareRoute
   '/app/checkin': typeof AppCheckinRoute
+  '/app/exercises': typeof AppExercisesRoute
   '/app/gaming': typeof AppGamingRoute
   '/app/garden': typeof AppGardenRoute
   '/app/home': typeof AppHomeRoute
+  '/app/insights': typeof AppInsightsRoute
   '/app/journey': typeof AppJourneyRoute
+  '/app/library': typeof AppLibraryRoute
   '/app/onboarding': typeof AppOnboardingRoute
+  '/app/paths': typeof AppPathsRoute
+  '/app/personality': typeof AppPersonalityRoute
   '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
   '/app/safety': typeof AppSafetyRoute
   '/app/via': typeof AppViaRoute
+  '/app/path/$pathId': typeof AppPathPathIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -152,15 +200,21 @@ export interface FileRoutesById {
   '/app/auth': typeof AppAuthRoute
   '/app/care': typeof AppCareRoute
   '/app/checkin': typeof AppCheckinRoute
+  '/app/exercises': typeof AppExercisesRoute
   '/app/gaming': typeof AppGamingRoute
   '/app/garden': typeof AppGardenRoute
   '/app/home': typeof AppHomeRoute
+  '/app/insights': typeof AppInsightsRoute
   '/app/journey': typeof AppJourneyRoute
+  '/app/library': typeof AppLibraryRoute
   '/app/onboarding': typeof AppOnboardingRoute
+  '/app/paths': typeof AppPathsRoute
+  '/app/personality': typeof AppPersonalityRoute
   '/app/practice': typeof AppPracticeRoute
   '/app/profile': typeof AppProfileRoute
   '/app/safety': typeof AppSafetyRoute
   '/app/via': typeof AppViaRoute
+  '/app/path/$pathId': typeof AppPathPathIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -172,15 +226,21 @@ export interface FileRouteTypes {
     | '/app/auth'
     | '/app/care'
     | '/app/checkin'
+    | '/app/exercises'
     | '/app/gaming'
     | '/app/garden'
     | '/app/home'
+    | '/app/insights'
     | '/app/journey'
+    | '/app/library'
     | '/app/onboarding'
+    | '/app/paths'
+    | '/app/personality'
     | '/app/practice'
     | '/app/profile'
     | '/app/safety'
     | '/app/via'
+    | '/app/path/$pathId'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -190,15 +250,21 @@ export interface FileRouteTypes {
     | '/app/auth'
     | '/app/care'
     | '/app/checkin'
+    | '/app/exercises'
     | '/app/gaming'
     | '/app/garden'
     | '/app/home'
+    | '/app/insights'
     | '/app/journey'
+    | '/app/library'
     | '/app/onboarding'
+    | '/app/paths'
+    | '/app/personality'
     | '/app/practice'
     | '/app/profile'
     | '/app/safety'
     | '/app/via'
+    | '/app/path/$pathId'
   id:
     | '__root__'
     | '/'
@@ -208,15 +274,21 @@ export interface FileRouteTypes {
     | '/app/auth'
     | '/app/care'
     | '/app/checkin'
+    | '/app/exercises'
     | '/app/gaming'
     | '/app/garden'
     | '/app/home'
+    | '/app/insights'
     | '/app/journey'
+    | '/app/library'
     | '/app/onboarding'
+    | '/app/paths'
+    | '/app/personality'
     | '/app/practice'
     | '/app/profile'
     | '/app/safety'
     | '/app/via'
+    | '/app/path/$pathId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -276,6 +348,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCheckinRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/exercises': {
+      id: '/app/exercises'
+      path: '/exercises'
+      fullPath: '/app/exercises'
+      preLoaderRoute: typeof AppExercisesRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/gaming': {
       id: '/app/gaming'
       path: '/gaming'
@@ -297,6 +376,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppHomeRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/insights': {
+      id: '/app/insights'
+      path: '/insights'
+      fullPath: '/app/insights'
+      preLoaderRoute: typeof AppInsightsRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/journey': {
       id: '/app/journey'
       path: '/journey'
@@ -304,11 +390,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppJourneyRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/library': {
+      id: '/app/library'
+      path: '/library'
+      fullPath: '/app/library'
+      preLoaderRoute: typeof AppLibraryRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/app/onboarding': {
       id: '/app/onboarding'
       path: '/onboarding'
       fullPath: '/app/onboarding'
       preLoaderRoute: typeof AppOnboardingRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/paths': {
+      id: '/app/paths'
+      path: '/paths'
+      fullPath: '/app/paths'
+      preLoaderRoute: typeof AppPathsRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/app/personality': {
+      id: '/app/personality'
+      path: '/personality'
+      fullPath: '/app/personality'
+      preLoaderRoute: typeof AppPersonalityRouteImport
       parentRoute: typeof AppRoute
     }
     '/app/practice': {
@@ -339,6 +446,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppViaRouteImport
       parentRoute: typeof AppRoute
     }
+    '/app/path/$pathId': {
+      id: '/app/path/$pathId'
+      path: '/path/$pathId'
+      fullPath: '/app/path/$pathId'
+      preLoaderRoute: typeof AppPathPathIdRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
@@ -347,15 +461,21 @@ interface AppRouteChildren {
   AppAuthRoute: typeof AppAuthRoute
   AppCareRoute: typeof AppCareRoute
   AppCheckinRoute: typeof AppCheckinRoute
+  AppExercisesRoute: typeof AppExercisesRoute
   AppGamingRoute: typeof AppGamingRoute
   AppGardenRoute: typeof AppGardenRoute
   AppHomeRoute: typeof AppHomeRoute
+  AppInsightsRoute: typeof AppInsightsRoute
   AppJourneyRoute: typeof AppJourneyRoute
+  AppLibraryRoute: typeof AppLibraryRoute
   AppOnboardingRoute: typeof AppOnboardingRoute
+  AppPathsRoute: typeof AppPathsRoute
+  AppPersonalityRoute: typeof AppPersonalityRoute
   AppPracticeRoute: typeof AppPracticeRoute
   AppProfileRoute: typeof AppProfileRoute
   AppSafetyRoute: typeof AppSafetyRoute
   AppViaRoute: typeof AppViaRoute
+  AppPathPathIdRoute: typeof AppPathPathIdRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
@@ -363,15 +483,21 @@ const AppRouteChildren: AppRouteChildren = {
   AppAuthRoute: AppAuthRoute,
   AppCareRoute: AppCareRoute,
   AppCheckinRoute: AppCheckinRoute,
+  AppExercisesRoute: AppExercisesRoute,
   AppGamingRoute: AppGamingRoute,
   AppGardenRoute: AppGardenRoute,
   AppHomeRoute: AppHomeRoute,
+  AppInsightsRoute: AppInsightsRoute,
   AppJourneyRoute: AppJourneyRoute,
+  AppLibraryRoute: AppLibraryRoute,
   AppOnboardingRoute: AppOnboardingRoute,
+  AppPathsRoute: AppPathsRoute,
+  AppPersonalityRoute: AppPersonalityRoute,
   AppPracticeRoute: AppPracticeRoute,
   AppProfileRoute: AppProfileRoute,
   AppSafetyRoute: AppSafetyRoute,
   AppViaRoute: AppViaRoute,
+  AppPathPathIdRoute: AppPathPathIdRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)

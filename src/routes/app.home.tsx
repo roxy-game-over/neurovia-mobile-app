@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import { Bell, ChevronRight, Flame, Moon, Sun } from "lucide-react";
 import { useState } from "react";
 
-import vi from "@/assets/vi-mascot.png.asset.json";
+import { VI } from "@/components/app/Brand";
 import { AppScreen } from "@/components/app/AppShell";
 import { TODAYS_PLAN } from "@/content/app-onboarding";
 import { supabase } from "@/integrations/supabase/client";
@@ -97,7 +97,7 @@ function Home() {
             </p>
           </div>
           <img
-            src={vi.url}
+            src={VI.base}
             alt=""
             className="anim-float pointer-events-none absolute -right-2 top-2 size-28 object-contain"
           />
@@ -167,7 +167,7 @@ function Home() {
         <div className="app-card mt-4 p-4">
           <p className="text-[15px] font-semibold text-[var(--app-accent)]">Continue Your Journey</p>
           <div className="mt-3 flex items-center gap-3">
-            <img src={vi.url} alt="" className="size-14 shrink-0 object-contain" />
+            <img src={VI.base} alt="" className="size-14 shrink-0 object-contain" />
             <div className="min-w-0 flex-1">
               <p className="text-[14px] font-semibold capitalize">
                 {journeyConcern.replace("-", " ")} · Day {Math.max(1, practices)}
@@ -240,7 +240,7 @@ function Home() {
         </div>
 
         <Link to="/app/via" className="app-card mt-3 flex items-center gap-3 p-4">
-          <img src={vi.url} alt="" className="size-14 shrink-0 object-contain" />
+          <img src={VI.base} alt="" className="size-14 shrink-0 object-contain" />
           <span className="min-w-0 flex-1">
             <strong className="block text-[14px] text-[var(--app-accent)]">VIA welcomes you! 👋</strong>
             <span className="text-[12px] text-[var(--app-text-dim)]">

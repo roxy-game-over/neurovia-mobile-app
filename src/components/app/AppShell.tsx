@@ -3,7 +3,7 @@ import { Moon, Sun, type LucideIcon } from "lucide-react";
 import { Compass, Gamepad2, Home, Leaf, Smile, HeartPulse } from "lucide-react";
 import type { ReactNode } from "react";
 
-import vi from "@/assets/vi-mascot.png.asset.json";
+import { VI } from "@/components/app/Brand";
 import { useAppTheme } from "@/lib/app/theme";
 
 export type Destination = {
@@ -85,7 +85,7 @@ export function TabBar() {
               className="flex size-11 items-center justify-center overflow-hidden rounded-full border-2"
               style={{ borderColor: viaActive ? "var(--app-accent)" : "var(--app-border)" }}
             >
-              <img src={vi.url} alt="" className="size-9 object-contain" />
+              <img src={VI.base} alt="" className="size-9 object-contain" />
             </span>
           </Link>
         </li>
@@ -134,17 +134,4 @@ export function ComingSoon({ note }: { note: string }) {
   );
 }
 
-/** Neurovia wordmark used on the auth + onboarding screens. */
-export function Wordmark({ className = "" }: { className?: string }) {
-  return (
-    <p className={`text-center text-[40px] font-bold leading-none tracking-tight ${className}`}>
-      <span className="text-[var(--app-text)]">neur</span>
-      <span className="text-[var(--app-accent)]">o</span>
-      <span className="text-[var(--app-text)]">v</span>
-      <span className="text-[var(--app-accent)]">ia</span>
-      <span aria-hidden className="align-super text-[16px] text-[var(--app-mint)]">
-        🌿
-      </span>
-    </p>
-  );
-}
+export { Wordmark, Vi, VI, LeafMark } from "@/components/app/Brand";
