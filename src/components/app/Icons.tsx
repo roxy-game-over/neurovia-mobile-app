@@ -138,14 +138,23 @@ export function AppIcon({
   name,
   size = 18,
   className = "",
+  color,
 }: {
   name: AppIconKey;
   size?: number;
   className?: string;
+  color?: string;
 }) {
   const { icon: Icon, tint } = APP_ICONS[name];
-  return <Icon className={className} style={{ width: size, height: size, color: tint }} strokeWidth={1.9} />;
+  return (
+    <Icon
+      className={className}
+      style={{ width: size, height: size, color: color ?? tint }}
+      strokeWidth={1.9}
+    />
+  );
 }
+
 
 /**
  * Legacy content lists still carry an emoji field. Map it to a drawn icon so no
