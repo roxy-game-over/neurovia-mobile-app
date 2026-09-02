@@ -1,8 +1,9 @@
 import { Link, useRouterState } from "@tanstack/react-router";
 import { Moon, Sun, type LucideIcon } from "lucide-react";
-import { Home, Route as RouteIcon, Sprout, HeartPulse, Sparkles, User } from "lucide-react";
+import { Compass, Gamepad2, Home, Leaf, Smile, HeartPulse } from "lucide-react";
 import type { ReactNode } from "react";
 
+import vi from "@/assets/vi-mascot.png.asset.json";
 import { useAppTheme } from "@/lib/app/theme";
 
 export type Destination = {
@@ -13,11 +14,11 @@ export type Destination = {
 
 export const DESTINATIONS: Destination[] = [
   { to: "/app/home", label: "Home", icon: Home },
-  { to: "/app/journey", label: "Journey", icon: RouteIcon },
-  { to: "/app/garden", label: "Garden", icon: Sprout },
-  { to: "/app/practice", label: "Practice", icon: HeartPulse },
-  { to: "/app/via", label: "VIA", icon: Sparkles },
-  { to: "/app/profile", label: "Profile", icon: User },
+  { to: "/app/journey", label: "Paths", icon: Compass },
+  { to: "/app/checkin", label: "Check-in", icon: Smile },
+  { to: "/app/garden", label: "Garden", icon: Leaf },
+  { to: "/app/gaming", label: "Gaming", icon: Gamepad2 },
+  { to: "/app/care", label: "Therapist", icon: HeartPulse },
 ];
 
 export function ThemeToggle() {
@@ -59,8 +60,9 @@ export function ScreenHeader({
 
 export function TabBar() {
   const pathname = useRouterState({ select: (s) => s.location.pathname });
+  const viaActive = pathname === "/app/via";
   return (
-    <nav className="sticky bottom-0 z-20 border-t border-[var(--app-border)] bg-[var(--app-bg-deep)] px-2 pb-[env(safe-area-inset-bottom)]">
+    <nav className="sticky bottom-0 z-20 border-t border-[var(--app-border)] bg-[var(--app-bg-deep)] px-1.5 pb-[env(safe-area-inset-bottom)]">
       <ul className="flex items-stretch justify-between">
         {DESTINATIONS.map(({ to, label, icon: Icon }) => {
           const active = pathname === to;
@@ -68,15 +70,25 @@ export function TabBar() {
             <li key={to} className="flex-1">
               <Link
                 to={to}
-                className="flex flex-col items-center gap-1 py-3 text-[11px] font-medium"
+                className="flex flex-col items-center gap-1 py-3 text-[10px] font-medium"
                 style={{ color: active ? "var(--app-accent)" : "var(--app-text-dim)" }}
               >
-                <Icon className="size-[20px]" />
+                <Icon className="size-[19px]" />
                 {label}
               </Link>
             </li>
           );
         })}
+        <li className="flex-1">
+          <Link to="/app/via" aria-label="Chat with VI" className="flex flex-col items-center justify-center py-2.5">
+            <span
+              className="flex size-11 items-center justify-center overflow-hidden rounded-full border-2"
+              style={{ borderColor: viaActive ? "var(--app-accent)" : "var(--app-border)" }}
+            >
+              <img src={vi.url} alt="" className="size-9 object-contain" />
+            </span>
+          </Link>
+        </li>
       </ul>
     </nav>
   );
@@ -118,6 +130,21 @@ export function ComingSoon({ note }: { note: string }) {
   return (
     <p className="rounded-2xl border border-dashed border-[var(--app-border)] px-4 py-6 text-center text-[13px] text-[var(--app-text-dim)]">
       {note}
+    </p>
+  );
+}
+
+/** Neurovia wordmark used on the auth + onboarding screens. */
+export function Wordmark({ className = "" }: { className?: string }) {
+  return (
+    <p className={`text-center text-[40px] font-bold leading-none tracking-tight ${className}`}>
+      <span className="text-[var(--app-text)]">neur</span>
+      <span className="text-[var(--app-accent)]">o</span>
+      <span className="text-[var(--app-text)]">v</span>
+      <span className="text-[var(--app-accent)]">ia</span>
+      <span aria-hidden className="align-super text-[16px] text-[var(--app-mint)]">
+        🌿
+      </span>
     </p>
   );
 }
