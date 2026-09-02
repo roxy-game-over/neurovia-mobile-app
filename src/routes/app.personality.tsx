@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { AppScreen, ScreenHeader } from "@/components/app/AppShell";
 import { Vi } from "@/components/app/Brand";
+import { AppIcon, iconForEmoji } from "@/components/app/Icons";
 import { CONCERNS, GOALS } from "@/content/app-onboarding";
 import { useAppAuth } from "@/lib/app/auth";
 
@@ -42,7 +43,7 @@ function Chips({
               color: active ? "var(--app-accent)" : "var(--app-text-dim)",
             }}
           >
-            {item.emoji && <span>{item.emoji}</span>}
+            {item.emoji && <AppIcon name={iconForEmoji(item.emoji)} size={14} />}
             {item.label}
             {active && <Check className="size-3.5" />}
           </button>

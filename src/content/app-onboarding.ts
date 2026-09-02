@@ -94,11 +94,11 @@ export const GENDERS = ["Female", "Male", "Non-binary", "Prefer not to say"] as 
 
 /** Today's plan strip on the home dashboard. */
 export const TODAYS_PLAN = [
-  { id: "breathe", label: "Breathe", meta: "5 min", emoji: "🪷", to: "/app/practice" },
-  { id: "journal", label: "Journal", meta: "10 min", emoji: "📖", to: "/app/practice" },
-  { id: "meditate", label: "Meditate", meta: "10 min", emoji: "🧘", to: "/app/practice" },
-  { id: "sleep", label: "Sleep", meta: "8 hrs", emoji: "🌙", to: "/app/practice" },
-  { id: "focus", label: "Focus", meta: "25 min", emoji: "🧭", to: "/app/practice" },
+  { id: "breathe", label: "Breathe", meta: "5 min", icon: "breathe", to: "/app/practice" },
+  { id: "journal", label: "Journal", meta: "10 min", icon: "journal", to: "/app/practice" },
+  { id: "meditate", label: "Meditate", meta: "10 min", icon: "meditate", to: "/app/practice" },
+  { id: "sleep", label: "Sleep", meta: "8 hrs", icon: "sleep", to: "/app/practice" },
+  { id: "focus", label: "Focus", meta: "25 min", icon: "focus", to: "/app/practice" },
 ] as const;
 
 export const JOURNEY_STAGES = [

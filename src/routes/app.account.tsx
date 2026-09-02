@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { VI } from "@/components/app/Brand";
 import { AppScreenPlain } from "@/components/app/AppShell";
+import { IconChip, iconForEmoji } from "@/components/app/Icons";
 import { Button } from "@/components/ui/button";
 import { CONSENT_ITEMS, GENDERS, WELLBEING_NOTICES } from "@/content/app-onboarding";
 import { useAppAuth } from "@/lib/app/auth";
@@ -161,9 +162,7 @@ function AccountSetup() {
             <div className="mt-7 space-y-3">
               {WELLBEING_NOTICES.map((item) => (
                 <div key={item.title} className="app-card flex items-start gap-4 p-4">
-                  <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-[var(--app-surface-2)] text-xl">
-                    {item.emoji}
-                  </span>
+                  <IconChip name={iconForEmoji(item.emoji)} size={44} />
                   <div>
                     <p className="text-[14px] font-semibold">{item.title}</p>
                     <p className="mt-0.5 text-[13px] leading-snug text-[var(--app-text-dim)]">{item.body}</p>

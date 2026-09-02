@@ -3,20 +3,21 @@ import { BookOpen, Clock, Search } from "lucide-react";
 import { useState } from "react";
 
 import { AppScreen, ScreenHeader } from "@/components/app/AppShell";
+import { IconChip, type AppIconKey } from "@/components/app/Icons";
 
 export const Route = createFileRoute("/app/library")({ component: Library });
 
 const CATEGORIES = ["All", "Anxiety", "Sleep", "Focus", "Relationships", "Self-worth"] as const;
 
-const ARTICLES = [
-  { title: "Why your mind loops at night", cat: "Sleep", mins: 4, emoji: "🌙" },
-  { title: "Anxiety is not a character flaw", cat: "Anxiety", mins: 5, emoji: "🫧" },
-  { title: "The 90-second wave", cat: "Anxiety", mins: 3, emoji: "🌊" },
-  { title: "Attention is a muscle, not a mood", cat: "Focus", mins: 6, emoji: "🎯" },
-  { title: "Saying no without the guilt hangover", cat: "Relationships", mins: 5, emoji: "🤝" },
-  { title: "Talking to yourself like someone you love", cat: "Self-worth", mins: 4, emoji: "💗" },
-  { title: "Rest is a skill you can practise", cat: "Sleep", mins: 4, emoji: "🛏️" },
-  { title: "When comparison hijacks your day", cat: "Self-worth", mins: 5, emoji: "🪞" },
+const ARTICLES: { title: string; cat: string; mins: number; icon: AppIconKey }[] = [
+  { title: "Why your mind loops at night", cat: "Sleep", mins: 4, icon: "sleep" },
+  { title: "Anxiety is not a character flaw", cat: "Anxiety", mins: 5, icon: "calm" },
+  { title: "The 90-second wave", cat: "Anxiety", mins: 3, icon: "breathe" },
+  { title: "Attention is a muscle, not a mood", cat: "Focus", mins: 6, icon: "focus" },
+  { title: "Saying no without the guilt hangover", cat: "Relationships", mins: 5, icon: "psychologist" },
+  { title: "Talking to yourself like someone you love", cat: "Self-worth", mins: 4, icon: "reframe" },
+  { title: "Rest is a skill you can practise", cat: "Sleep", mins: 4, icon: "meditate" },
+  { title: "When comparison hijacks your day", cat: "Self-worth", mins: 5, icon: "space" },
 ];
 
 function Library() {
@@ -64,9 +65,7 @@ function Library() {
       <div className="mt-4 space-y-3 px-5 pb-8">
         {list.map((a) => (
           <article key={a.title} className="app-card flex items-center gap-4 p-4">
-            <span className="flex size-12 items-center justify-center rounded-2xl bg-[var(--app-accent)]/12 text-2xl">
-              {a.emoji}
-            </span>
+            <IconChip name={a.icon} size={48} />
             <span className="min-w-0 flex-1">
               <strong className="block text-[15px] text-[var(--app-text)]">{a.title}</strong>
               <span className="flex items-center gap-2 text-[11.5px] text-[var(--app-text-dim)]">

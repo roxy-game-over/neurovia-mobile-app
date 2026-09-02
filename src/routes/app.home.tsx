@@ -5,6 +5,7 @@ import { Bell, ChevronRight, Flame, Moon, Sun } from "lucide-react";
 import { useState } from "react";
 
 import { VI } from "@/components/app/Brand";
+import { AppIcon, IconChip } from "@/components/app/Icons";
 import { AppScreen } from "@/components/app/AppShell";
 import { TODAYS_PLAN } from "@/content/app-onboarding";
 import { supabase } from "@/integrations/supabase/client";
@@ -150,7 +151,7 @@ function Home() {
                 to={item.to}
                 className="flex min-w-[86px] flex-col items-center rounded-2xl border border-[var(--app-border)] bg-[var(--app-surface-2)] px-3 py-3"
               >
-                <span className="text-2xl">{item.emoji}</span>
+                <IconChip name={item.icon} size={40} round />
                 <strong className="mt-2 text-[13px]">{item.label}</strong>
                 <span className="text-[11px] text-[var(--app-text-dim)]">{item.meta}</span>
                 <span
@@ -194,47 +195,58 @@ function Home() {
 
         {/* Explore */}
         <div className="mt-4 grid grid-cols-4 gap-2.5">
-          {[
-            { to: "/app/library", label: "Library", emoji: "📚" },
-            { to: "/app/exercises", label: "Exercises", emoji: "🧠" },
-            { to: "/app/insights", label: "Insights", emoji: "📊" },
-            { to: "/app/personality", label: "My space", emoji: "🪞" },
-          ].map((item) => (
+          {([
+            { to: "/app/library", label: "Library", icon: "library" },
+            { to: "/app/exercises", label: "Exercises", icon: "exercises" },
+            { to: "/app/insights", label: "Insights", icon: "insights" },
+            { to: "/app/personality", label: "My Space", icon: "space" },
+          ] as const).map((item) => (
             <Link
               key={item.to}
               to={item.to}
-              className="app-card flex flex-col items-center gap-1.5 px-1 py-3.5"
+              className="app-card flex flex-col items-center gap-2 px-1 py-3.5"
             >
-              <span className="text-xl">{item.emoji}</span>
+              <IconChip name={item.icon} size={38} round />
               <span className="text-[11px] font-semibold text-[var(--app-text-dim)]">{item.label}</span>
             </Link>
           ))}
         </div>
 
-
         {/* Garden */}
-        <div className="app-card mt-4 p-4">
-          <h3 className="flex items-center gap-2 text-[17px] font-bold">
-            My Garden <span aria-hidden>{stage.emoji}</span>
-          </h3>
-          <p className="mt-1 text-[13px] text-[var(--app-text-dim)]">
-            You planted {practices} positivity 🌱 — nurture your garden, grow your mind.
-          </p>
-          <p className="mt-1 text-[12px] text-[var(--app-text-dim)]">
-            {stage.label} · {profile?.coins ?? 0} coins
-          </p>
-          <Link
-            to="/app/garden"
-            className="mt-3 inline-flex h-10 items-center justify-center rounded-full bg-[var(--app-accent)] px-5 text-[14px] font-semibold text-[var(--app-on-accent)]"
-          >
-            Enter Garden
-          </Link>
+        <div className="app-card relative mt-4 overflow-hidden p-4">
+          <div className="max-w-[62%]">
+            <h3 className="text-[17px] font-bold">My Garden</h3>
+            <p className="mt-1 text-[13px] leading-snug text-[var(--app-text-dim)]">
+              Every step you finish waters a seed. You’ve grown {practices}{" "}
+              {practices === 1 ? "step" : "steps"} so far.
+            </p>
+            <div className="mt-3 flex items-center gap-2">
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--app-surface-2)] px-2.5 py-1 text-[11px] font-semibold">
+                <AppIcon name="tree" size={13} /> {stage.label}
+              </span>
+              <span className="inline-flex items-center gap-1.5 rounded-full bg-[var(--app-surface-2)] px-2.5 py-1 text-[11px] font-semibold">
+                <AppIcon name="spark" size={13} /> {profile?.coins ?? 0} coins
+              </span>
+            </div>
+            <Link
+              to="/app/garden"
+              className="mt-3 inline-flex h-10 items-center justify-center rounded-full bg-[var(--app-accent)] px-5 text-[14px] font-semibold text-[var(--app-on-accent)]"
+            >
+              Enter Garden
+            </Link>
+          </div>
+          <img
+            src={VI.garden}
+            alt=""
+            loading="lazy"
+            className="pointer-events-none absolute -bottom-2 -right-3 size-32 object-contain"
+          />
         </div>
 
         {/* Trio */}
         <div className="mt-4 grid grid-cols-2 gap-3">
           <Link to="/app/care" className="app-card flex flex-col p-4">
-            <span className="text-2xl">🛋️</span>
+            <IconChip name="psychologist" size={40} />
             <strong className="mt-2 block text-[14px]">Talk to Therapist</strong>
             <span className="mt-1 block text-[11px] leading-snug text-[var(--app-text-dim)]">
               Professional support when you need it.
@@ -246,10 +258,10 @@ function Home() {
             </span>
           </Link>
           <Link to="/app/gaming" className="app-card flex flex-col p-4">
-            <span className="text-2xl">🎮</span>
+            <IconChip name="games" size={40} />
             <strong className="mt-2 block text-[14px]">Play &amp; Grow</strong>
             <span className="mt-1 block text-[11px] leading-snug text-[var(--app-text-dim)]">
-              Fun games that help you heal.
+              Mind games that help you heal.
             </span>
             <span className="mt-auto pt-3">
               <span className="inline-flex h-8 items-center rounded-full bg-[var(--app-accent)] px-3 text-[12px] font-semibold text-[var(--app-on-accent)]">
@@ -260,9 +272,9 @@ function Home() {
         </div>
 
         <Link to="/app/via" className="app-card mt-3 flex items-center gap-3 p-4">
-          <img src={VI.base} alt="" className="size-14 shrink-0 object-contain" />
+          <img src={VI.chat} alt="" loading="lazy" className="size-14 shrink-0 object-contain" />
           <span className="min-w-0 flex-1">
-            <strong className="block text-[14px] text-[var(--app-accent)]">VIA welcomes you! 👋</strong>
+            <strong className="block text-[14px] text-[var(--app-accent)]">VIA welcomes you</strong>
             <span className="text-[12px] text-[var(--app-text-dim)]">
               I’m here to listen, guide and support you anytime.
             </span>

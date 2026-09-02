@@ -4,6 +4,7 @@ import { useState } from "react";
 
 import { VI } from "@/components/app/Brand";
 import { AppScreenPlain, Wordmark } from "@/components/app/AppShell";
+import { IconChip, iconForEmoji } from "@/components/app/Icons";
 import { Button } from "@/components/ui/button";
 import {
   CONCERNS,
@@ -104,9 +105,7 @@ function Onboarding() {
               <div className="app-card space-y-4 p-4 text-left">
                 {WELCOME_PILLARS.map((item) => (
                   <div key={item.title} className="flex items-center gap-4">
-                    <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-[var(--app-surface-2)] text-xl">
-                      {item.emoji}
-                    </span>
+                    <IconChip name={iconForEmoji(item.emoji)} size={44} />
                     <div>
                       <p className="text-[14px] font-semibold">{item.title}</p>
                       <p className="text-[13px] text-[var(--app-text-dim)]">{item.body}</p>
@@ -120,7 +119,7 @@ function Onboarding() {
           {step === 2 && (
             <section>
               <h1 className="text-[34px] font-bold leading-tight">
-                Hi, I’m <span className="text-[var(--app-accent)]">VI</span> <span aria-hidden>💜</span>
+                Hi, I’m <span className="text-[var(--app-accent)]">VI</span>
               </h1>
               <p className="mt-2 text-[18px] font-semibold text-[var(--app-accent)]">
                 Your AI companion for mental wellness.
@@ -131,7 +130,7 @@ function Onboarding() {
               <div className="relative mt-5">
                 <img src={VI.base} alt="VI waving" className="anim-float mx-auto size-48 object-contain" />
                 <p className="app-card absolute right-0 top-0 max-w-[52%] p-3 text-[13px]">
-                  I’m excited to be part of your journey! <span aria-hidden>✨</span>
+                  I’m excited to be part of your journey!
                 </p>
               </div>
               <div className="mt-4 space-y-3">
@@ -152,9 +151,7 @@ function Onboarding() {
                 <div className="mt-3 grid grid-cols-4 gap-2 text-center">
                   {TOGETHER_WE_CAN.map((item) => (
                     <div key={item.label}>
-                      <span className="mx-auto flex size-11 items-center justify-center rounded-full bg-[var(--app-surface-2)] text-xl">
-                        {item.emoji}
-                      </span>
+                      <IconChip name={iconForEmoji(item.emoji)} size={44} round className="mx-auto" />
                       <p className="mt-2 text-[11px] leading-tight text-[var(--app-text-dim)]">{item.label}</p>
                     </div>
                   ))}
@@ -216,7 +213,7 @@ function Onboarding() {
                     <span className="text-[var(--app-accent)]">journey</span>
                   </h1>
                   <p className="mt-3 text-[15px] leading-snug text-[var(--app-text-dim)]">
-                    Small steps today,<br />a better you tomorrow. <span aria-hidden>💜</span>
+                    Small steps today,<br />a better you tomorrow.
                   </p>
                 </div>
                 <img src={VI.base} alt="VI with a seedling" className="anim-float size-36 object-contain" />
@@ -224,9 +221,7 @@ function Onboarding() {
               <div className="mt-6 space-y-3">
                 {JOURNEY_FEATURES.map((item) => (
                   <div key={item.title} className="app-card flex items-center gap-4 p-4">
-                    <span className="flex size-11 shrink-0 items-center justify-center rounded-2xl bg-[var(--app-surface-2)] text-xl">
-                      {item.emoji}
-                    </span>
+                    <IconChip name={iconForEmoji(item.emoji)} size={44} />
                     <div className="min-w-0 flex-1">
                       <p className="text-[14px] font-semibold">{item.title}</p>
                       <p className="text-[12.5px] leading-snug text-[var(--app-text-dim)]">{item.body}</p>
@@ -275,7 +270,7 @@ function Choice({
       onClick={onClick}
       className={`app-card flex min-h-[90px] items-center gap-3 p-4 text-left transition-all ${selected ? "border-[var(--app-accent)] bg-[var(--app-surface-2)]" : ""}`}
     >
-      <span className="text-2xl">{emoji}</span>
+      <IconChip name={iconForEmoji(emoji)} size={38} />
       <span className="text-[13px] font-semibold leading-tight">{label}</span>
       <span
         className={`ml-auto flex size-5 shrink-0 items-center justify-center rounded-full border ${selected ? "border-[var(--app-accent)] bg-[var(--app-accent)]" : "border-[var(--app-text-dim)]"}`}
